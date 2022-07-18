@@ -26,6 +26,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 // usercontroller
 
 Route::get('user/index',[UserController::class ,'index'])->name('user');
@@ -36,11 +37,11 @@ Route::get('user/commentReplay/index',[UserController::class ,'commentReplay'])-
 Route::get('user/likeposts',[UserController::class ,'likePosts'])->name('userlikeposts');
 
 //adminController
-Route::get('Admin/index',[AdminController::class ,'index'])->name('Admin.Dashboard');
-Route::get('Admin/catagory/index',[AdminController::class ,'catagory'])->name('Admin.catagory');
-Route::get('Admin/comments/index',[AdminController::class ,'comment'])->name('Admin.comment');
-Route::get('Admin/commentReplay/index',[AdminController::class ,'commentReplay'])->name('Admin.commentReplay');
-Route::get('Admin/posts/index',[AdminController::class ,'posts'])->name('Admin.posts');
+Route::get('Admin/index',[AdminController::class ,'index'])->name('AdminDashboard');
+Route::get('Admin/catagory/index',[AdminController::class ,'catagory'])->name('Admincatagory');
+Route::get('Admin/comments/index',[AdminController::class ,'comment'])->name('Admincomment');
+Route::get('Admin/commentReplay/index',[AdminController::class ,'commentReplay'])->name('AdmincommentReplay');
+Route::get('Admin/posts/index',[AdminController::class ,'posts'])->name('Adminposts');
 
 //Homecontroller
 Route::get('/index',[HomeController::class ,'index'])->name('index');
