@@ -2,8 +2,8 @@
 
 @section('content')
     <nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color:#3097D1">
-        <a href="index.html" class="navbar-brand"><img src="{{ asset('img/brand-white.png') }}" alt="logo" class="img-fluid"
-                width="80px" height="100px"></a>
+        <a href="index.html" class="navbar-brand"><img src="{{ asset('img/brand-white.png') }}" alt="logo"
+                class="img-fluid" width="80px" height="100px"></a>
 
         <button class="navbar-toggler" data-toggle="collapse" data-target="#responsive"><span
                 class="navbar-toggler-icon"></span></button>
@@ -11,16 +11,21 @@
 
         <div class="collapse navbar-collapse" id="responsive">
             <ul class="navbar-nav mr-auto text-capitalize">
-               
-                <li class="nav-item"><a href="{{route('user')}}" class="nav-link active">Home <i class="fas fa-home"></i> </a></li>
-                <li class="nav-item"><a href="{{route('userprofile')}}" class="nav-link active">profile <i class="fas fa-user"></i></a></li>
-             
-                <li class="nav-item"><a href="{{route('usercomment')}}" class="nav-link active">comment <i class="far fa-comment"></i></a></li>
-                <li class="nav-item"><a href="{{route('userReplayView')}}" class="nav-link active">CommentReplay <i class="far fa-comment"></i></a></li>
-                
-                <li class="nav-item"><a href="{{route('userlikeposts')}}" class="nav-link active">likePosts <i class="fa fa-thumbs-up"></i></a></li>
-  
-                
+
+                <li class="nav-item"><a href="{{ route('user') }}" class="nav-link active">Home <i class="fas fa-home"></i>
+                    </a></li>
+                <li class="nav-item"><a href="{{ route('userprofile') }}" class="nav-link active">profile <i
+                            class="fas fa-user"></i></a></li>
+
+                <li class="nav-item"><a href="{{ route('usercomment') }}" class="nav-link active">comment <i
+                            class="far fa-comment"></i></a></li>
+                <li class="nav-item"><a href="{{ route('userReplayView') }}" class="nav-link active">CommentReplay <i
+                            class="far fa-comment"></i></a></li>
+
+                <li class="nav-item"><a href="{{ route('userlikeposts') }}" class="nav-link active">likePosts <i
+                            class="fa fa-thumbs-up"></i></a></li>
+
+
             </ul>
 
             <form action="" class="form-inline ml-auto d-none d-md-block">
@@ -407,26 +412,56 @@
 
                     <div class="card">
 
-
+                        <div class="form-group">
+                            <label for="comment">Post:</label>
+                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                        </div>
                         <div class="card-header bg-transparent">
                             <form class="form-inline">
 
 
+
+
+
                                 <div class="input-group w-100">
-                                    <input type="text" name="message" id="message" placeholder="Message"
-                                        class="form-control form-control-md">
+
 
                                     <div class="input-group-append">
+
                                         <div class="input-group-text">
-                                            <i class="fas fa-camera"></i>
+
+                                            <i class="fas fa-camera"> <input type="file"></i>
+
+                                        </div>
+
+                                        <div class="input-group-text">
+
+
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                    id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    <i class="fas fa-bars">catagory</i>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Something else here</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
 
 
                                     </div>
 
+                                    <input type="submit" value="Post" class="btn btn-primary btn-lg btn-block">
                                 </div>
 
 
+
+
+                                <hr>
 
 
 
@@ -438,7 +473,8 @@
 
 
 
-
+                        <hr>
+                        <hr>
 
 
                         <div class="card-body">
@@ -537,38 +573,31 @@
 
 
                         <div class="jumbotron">
-                            
+
                             <button type="button" class="btn btn-primary ">
-                            
+
                                 <i class="fa fa-thumbs-up"></i>
                                 like <span class="badge bg-secondary">4</span>
                             </button>
-                           
-                            
+
+
                             <button type="button" class="btn btn-primary">
                                 <i class="far fa-comment"></i>
                                 Comment
-                                <a href="{{route('usercommentReplay')}}"> <span class="badge bg-secondary"> 4</span></a>
+                                <a href="{{ route('usercommentReplay') }}"> <span class="badge bg-secondary">
+                                        4</span></a>
                             </button>
                             <button type="button" class="btn btn-primary">
-                                <i class="fa fa-share-alt"></i>
-                                share
-                                <a href="{{route('usercommentReplay')}}"> <span class="badge bg-secondary"> 4</span></a>
-                                
+
+                                <a href="{{ route('usercommentReplay') }}"> <span class="badge bg-secondary">
+                                        4</span></a>
+
                             </button>
                         </div>
 
                         <hr>
 
 
-
-                        <div class="card-body">
-
-
-
-
-
-                        </div>
 
 
 
