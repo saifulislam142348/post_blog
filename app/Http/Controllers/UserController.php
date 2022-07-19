@@ -26,6 +26,10 @@ class UserController extends Controller
         return view('user/commentReplay/index');
       
     }
+    public function ReplayView(){
+        return view('user/commentReplay/view');
+      
+    }
     public function likePosts(){
         return view('user/likeposts');
       

@@ -14,7 +14,7 @@
                 <li class="nav-item"><a href="{{route('userprofile')}}" class="nav-link active">profile</a></li>
              
                 <li class="nav-item"><a href="{{route('usercomment')}}" class="nav-link active">comment</a></li>
-                <li class="nav-item"><a href="{{route('usercommentReplay')}}" class="nav-link active">CommentReplay</a></li>
+                <li class="nav-item"><a href="{{route('userReplayView')}}" class="nav-link active">CommentReplay</a></li>
                 
                 <li class="nav-item"><a href="{{route('userlikeposts')}}" class="nav-link active">likePosts</a></li>
   

@@ -12,13 +12,13 @@
         <div class="collapse navbar-collapse" id="responsive">
             <ul class="navbar-nav mr-auto text-capitalize">
                
-                <li class="nav-item"><a href="{{route('user')}}" class="nav-link active">Home</a></li>
-                <li class="nav-item"><a href="{{route('userprofile')}}" class="nav-link active">profile</a></li>
+                <li class="nav-item"><a href="{{route('user')}}" class="nav-link active">Home <i class="fas fa-home"></i> </a></li>
+                <li class="nav-item"><a href="{{route('userprofile')}}" class="nav-link active">profile <i class="fas fa-user"></i></a></li>
              
-                <li class="nav-item"><a href="{{route('usercomment')}}" class="nav-link active">comment</a></li>
-                <li class="nav-item"><a href="{{route('usercommentReplay')}}" class="nav-link active">CommentReplay</a></li>
+                <li class="nav-item"><a href="{{route('usercomment')}}" class="nav-link active">comment <i class="far fa-comment"></i></a></li>
+                <li class="nav-item"><a href="{{route('userReplayView')}}" class="nav-link active">CommentReplay <i class="far fa-comment"></i></a></li>
                 
-                <li class="nav-item"><a href="{{route('userlikeposts')}}" class="nav-link active">likePosts</a></li>
+                <li class="nav-item"><a href="{{route('userlikeposts')}}" class="nav-link active">likePosts <i class="fa fa-thumbs-up"></i></a></li>
   
                 
             </ul>
@@ -537,17 +537,24 @@
 
 
                         <div class="jumbotron">
-                            <button type="button" class="btn btn-primary">
+                            
+                            <button type="button" class="btn btn-primary ">
+                            
+                                <i class="fa fa-thumbs-up"></i>
                                 like <span class="badge bg-secondary">4</span>
                             </button>
+                           
+                            
                             <button type="button" class="btn btn-primary">
-                                dislike <span class="badge bg-secondary">4</span>
+                                <i class="far fa-comment"></i>
+                                Comment
+                                <a href="{{route('usercommentReplay')}}"> <span class="badge bg-secondary"> 4</span></a>
                             </button>
                             <button type="button" class="btn btn-primary">
-                                comment <span class="badge bg-secondary">4</span>
-                            </button>
-                            <button type="button" class="btn btn-primary">
-                                share<span class="badge bg-secondary">4</span>
+                                <i class="fa fa-share-alt"></i>
+                                share
+                                <a href="{{route('usercommentReplay')}}"> <span class="badge bg-secondary"> 4</span></a>
+                                
                             </button>
                         </div>
 

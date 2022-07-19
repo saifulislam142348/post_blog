@@ -8,12 +8,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark ">Comment  list</h1>
+                <h1 class="m-0 text-dark ">Votes list</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{route('AdminDashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active">Coment  list</li>
+                    <li class="breadcrumb-item active">Votes list</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -29,7 +29,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h3 class="card-title">Coment  list</h3>
+                            <h3 class="card-title">votes list</h3>
                            
                         </div>
                     </div>
@@ -46,8 +46,8 @@
                                     <th>slug</th>
                                     <th>image</th>
                                     <th>description</th>
-                                    <th>comment</th>
-                                    <th>CommentReplay</th>
+                                    <th>votes</th>
+                                   
                                     <th style="width: 40px">Action</th>
                                 </tr>
                             </thead>
@@ -63,7 +63,7 @@
                                         <td>image</td>
                                         <td>descrition</td>
                                         <td>cooment</td>
-                                        <td>commenntreplay</td>
+                                       
                                         <td>
                                         
                                         </td>
@@ -80,7 +80,7 @@
                              
                                     <tr>
                                         <td colspan="5">
-                                            <h5 class="text-center">No Coment Replay list found.</h5>
+                                            <h5 class="text-center">No Votes list found.</h5>
                                         </td>
                                     </tr>
 

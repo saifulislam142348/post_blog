@@ -34,6 +34,7 @@ Route::get('user/notification',[UserController::class ,'notification'])->name('n
 Route::get('user/profile',[UserController::class ,'profile'])->name('userprofile');
 Route::get('user/comment/index',[UserController::class ,'comment'])->name('usercomment');
 Route::get('user/commentReplay/index',[UserController::class ,'commentReplay'])->name('usercommentReplay');
+Route::get('user/commentReplay/view',[UserController::class ,'ReplayView'])->name('userReplayView');
 Route::get('user/likeposts',[UserController::class ,'likePosts'])->name('userlikeposts');
 
 //adminController
@@ -42,6 +43,9 @@ Route::get('Admin/catagory/index',[AdminController::class ,'catagory'])->name('A
 Route::get('Admin/comments/index',[AdminController::class ,'comment'])->name('Admincomment');
 Route::get('Admin/commentReplay/index',[AdminController::class ,'commentReplay'])->name('AdmincommentReplay');
 Route::get('Admin/posts/index',[AdminController::class ,'posts'])->name('Adminposts');
+Route::get('Admin/posts/photo',[AdminController::class ,'photo'])->name('Adminphoto');
+Route::get('Admin/votes/index',[AdminController::class ,'like'])->name('Adminlvote');
+Route::get('Admin/user/index',[AdminController::class ,'user'])->name('Adminuser');
 
 //Homecontroller
 Route::get('/index',[HomeController::class ,'index'])->name('index');

@@ -11,7 +11,7 @@ class AdminController extends Controller
    }
 
    public function comment(){
-    return view('admin/comment/index');
+    return view('admin/comments/index');
    }
 
    public function commentReplay(){
@@ -22,5 +22,14 @@ class AdminController extends Controller
    }
    public function posts(){
     return view('admin/posts/index');
+   }
+   public function like(){
+    return view('admin/votes/index');
+   }
+   public function user(){
+    return view('admin/user/index');
+   }
+   public function photo(){
+    return view('admin/posts/photo');
    }
 }
