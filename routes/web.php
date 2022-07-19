@@ -47,10 +47,41 @@ Route::get('Admin/posts/photo',[AdminController::class ,'photo'])->name('Adminph
 Route::get('Admin/votes/index',[AdminController::class ,'like'])->name('Adminlvote');
 Route::get('Admin/user/index',[AdminController::class ,'user'])->name('Adminuser');
 
-//Homecontroller
-Route::get('/index',[HomeController::class ,'index'])->name('index');
-Route::get('/search',[HomeController::class ,'search'])->name('search');
-Route::get('/post',[HomeController::class ,'post'])->name('post');
-Route::get('/posts',[HomeController::class ,'posts'])->name('posts');
-Route::get('/catagories',[HomeController::class ,'catagories'])->name('catagories');
-Route::get('/catagorypost',[HomeController::class ,'catagorypost'])->name('catagorypost');
+
+
+//user login
+Auth::routes();
+  
+/*------------------------------------------
+--------------------------------------------
+All Normal Users Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:user'])->group(function () {
+  
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+});
+  
+/*------------------------------------------
+--------------------------------------------
+All Admin Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:admin'])->group(function () {
+  
+    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+});
+  
+/*------------------------------------------
+--------------------------------------------
+All Admin Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:manager'])->group(function () {
+  
+    Route::get('/manager/home', [HomeController::class, 'managerHome'])->name('manager.home');
+});
+ 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
