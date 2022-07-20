@@ -5,7 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CommentReplayController;
-use App\Http\Controllers\CatatoryController;
+use App\Http\Controllers\CatagoryController;
+use App\Http\Controllers\PostController;
 
 use App\Http\Controllers\HomeController;
 
@@ -36,10 +37,14 @@ Route::get('user/comment/index',[UserController::class ,'comment'])->name('userc
 Route::get('user/commentReplay/index',[UserController::class ,'commentReplay'])->name('usercommentReplay');
 Route::get('user/commentReplay/view',[UserController::class ,'ReplayView'])->name('userReplayView');
 Route::get('user/likeposts',[UserController::class ,'likePosts'])->name('userlikeposts');
+Route::get('user/post/index',[UserController::class ,'post'])->name('userpost');
+Route::post('user/post/index/{id}',[UserController::class ,'votes'])->name('userlike');
+Route::post('user/post/like',[UserController::class ,'like']);
 
 //adminController
 Route::get('Admin/index',[AdminController::class ,'index'])->name('AdminDashboard');
 Route::get('Admin/catagory/index',[AdminController::class ,'catagory'])->name('Admincatagory');
+Route::get('Admin/catagory/create',[AdminController::class ,'create'])->name('catagorycreate');
 Route::get('Admin/comments/index',[AdminController::class ,'comment'])->name('Admincomment');
 Route::get('Admin/commentReplay/index',[AdminController::class ,'commentReplay'])->name('AdmincommentReplay');
 Route::get('Admin/posts/index',[AdminController::class ,'posts'])->name('Adminposts');
@@ -85,3 +90,12 @@ Route::middleware(['auth', 'user-access:manager'])->group(function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//catagory controller
+Route::post('Admin/catagory/create', [CatagoryController::class, 'store'])->name('catagoryStore');
+Route::delete('Admin/catagory/index/{id}', [CatagoryController::class, 'delete']);
+Route::get('admin/catagory/edit/{id}', [CatagoryController::class, 'edit']);
+
+//PostController
+
+Route::post('user/post/index', [PostController::class, 'store'])->name('postStore');

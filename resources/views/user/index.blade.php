@@ -12,7 +12,8 @@
         <div class="collapse navbar-collapse" id="responsive">
             <ul class="navbar-nav mr-auto text-capitalize">
 
-                <li class="nav-item"><a href="{{ route('user') }}" class="nav-link active">Home <i class="fas fa-home"></i>
+                <li class="nav-item"><a href="{{ route('user') }}" class="nav-link active">Home <i
+                            class="fas fa-home"></i>
                     </a></li>
                 <li class="nav-item"><a href="{{ route('userprofile') }}" class="nav-link active">profile <i
                             class="fas fa-user"></i></a></li>
@@ -410,86 +411,40 @@
                 <div class="middle-column">
 
 
-                    <div class="card">
+                    <hr>
+                    <hr>
+                    <div class="d-grid gap-2">
 
-                        <div class="form-group">
-                            <label for="comment">Post:</label>
-                            <textarea class="form-control" rows="5" id="comment"></textarea>
-                        </div>
-                        <div class="card-header bg-transparent">
-                            <form class="form-inline">
+                        <a class="btn btn-primary" href="{{ route('userpost') }}">Post</a>
 
+                    </div>
 
 
 
-
-                                <div class="input-group w-100">
-
-
-                                    <div class="input-group-append">
-
-                                        <div class="input-group-text">
-
-                                            <i class="fas fa-camera"> <input type="file"></i>
-
-                                        </div>
-
-                                        <div class="input-group-text">
+                    <hr>
+                    <hr>
 
 
-                                            <div class="dropdown">
-                                                <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                    id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                                    aria-expanded="false">
-                                                    <i class="fas fa-bars">catagory</i>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                    <li><a class="dropdown-item" href="#">Something else here</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-
-                                    <input type="submit" value="Post" class="btn btn-primary btn-lg btn-block">
-                                </div>
-
-
-
-
-                                <hr>
-
-
-
-
-                            </form>
-
-                        </div>
-
-
-
-
-                        <hr>
-                        <hr>
-
-
-                        <div class="card-body">
-
+                    <div class="card-body">
+                        @foreach ($post as $item)
                             <div class="media">
                                 <img src="{{ asset('img/avatar-dhg.png') }}" alt="img" width="55px"
                                     height="55px" class="rounded-circle mr-3">
 
                                 <div class="media-body">
-                                    <h5>Dave Gamache</h5>
-                                    <p class="card-text text-justify">Aenean lacinia bibendum nulla sed consectetur.
-                                        Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac
-                                        consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in,
-                                        egestas eget quam. Vestibulum id ligula porta felis euismod semper. Cum sociis
-                                        natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                                    <h5>{{ $item->user_id }}</h5>
+
+                                    <ul class="bg-green">
+                                        <ol><small>Time:{{ $item->created_at }}</small></ol>
+                                        <ol><small>Title:{{ $item->title }}</small></ol>
+                                        <ol><small>Title:education</small></ol>
+
+
+                                    </ul>
+
+
+
+                                    <p class="card-text text-justify">{{ $item->body }}</p>
 
 
 
@@ -524,8 +479,22 @@
 
 
                                 </div>
-                                <small>5min</small>
 
+
+                                <hr>
+
+                                <div class="dropdown">
+                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
+                                        id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa fa-bars"></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li><a class="dropdown-item btn btn-outline-info " href="#">Edit</a></li>
+                                        <li><a class="dropdown-item btn btn-outline-info " href="#">Delete</a></li>
+
+                                    </ul>
+                                </div>
 
 
                             </div>
@@ -533,64 +502,52 @@
 
 
 
+
+
+                    </div>
+
+
+
+                    <hr>
+
+
+                    <!-- Gallery -->
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                            <img height="100px" weight="300px" src="{{ asset($item->image) }}" class="img-thumbnail">
 
 
                         </div>
+                        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                            <img height="100px" weight="300px" src="{{ asset($item->image) }}" class="img-thumbnail">
 
 
-
-                        <hr>
-
-
-                        <!-- Gallery -->
-                        <div class="row">
-                            <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
-                                    class="w-100 shadow-1-strong rounded mb-4" alt="Boat on Calm Water" />
-
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain1.webp"
-                                    class="w-100 shadow-1-strong rounded mb-4" alt="Wintry Mountain Landscape" />
-                            </div>
-
-                            <div class="col-lg-4 mb-4 mb-lg-0">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain2.webp"
-                                    class="w-100 shadow-1-strong rounded mb-4" alt="Mountains in the Clouds" />
-
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
-                                    class="w-100 shadow-1-strong rounded mb-4" alt="Boat on Calm Water" />
-                            </div>
-
-                            <div class="col-lg-4 mb-4 mb-lg-0">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp"
-                                    class="w-100 shadow-1-strong rounded mb-4" alt="Waves at Sea" />
-
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain3.webp"
-                                    class="w-100 shadow-1-strong rounded mb-4" alt="Yosemite National Park" />
-                            </div>
                         </div>
+                        @endforeach
                         <!-- Gallery -->
 
 
 
                         <div class="jumbotron">
 
-                            <button type="button" class="btn btn-primary ">
+                            <small class="float-left">
+                                <span title="likes" id="savelike" data-type="like" data-post="1"
+                                    class="mr-2 btn btn-sm btn-outline-primary d-inlinefont-weight-bold">like</span>
 
-                                <i class="fa fa-thumbs-up"></i>
-                                like <span class="badge bg-secondary">4</span>
-                            </button>
+                                <span class="like-count"></span>
+                            </small>
 
 
                             <button type="button" class="btn btn-primary">
                                 <i class="far fa-comment"></i>
                                 Comment
-                                <a href="{{ route('usercommentReplay') }}"> <span class="badge bg-secondary">
+                                <a href="{{ route('usercomment') }}"> <span class="badge bg-secondary">
                                         4</span></a>
                             </button>
                             <button type="button" class="btn btn-primary">
 
-                                <a href="{{ route('usercommentReplay') }}"> <span class="badge bg-secondary">
-                                        4</span></a>
+                                <a href="{{ route('usercomment') }}"> <span class="badge bg-secondary">
+                                        comment View (4)</span></a>
 
                             </button>
                         </div>
@@ -646,7 +603,39 @@
 
 
 
+            <script>
+                $(document).on('click', '#savelike', function() {
+                    var _post = $(this).data('post');
+                    var _type = $(this).data('type');
+                    var vm = $(this);
 
+                    //ajax
+                    $.ajax({
+                        url: "{{ url('user/post/like') }}",
+                        type: "post",
+                        datatype: 'json',
+                        data: {
+                            post: _post,
+                            type: _type,
+                            _token: {{ csrf_token() }}
+                        },
+
+                        beforesend: function() {
+                            vm.addclass('disabled');
+                        },
+                        success: function(res) {
+                            if (res.bool == true) {
+                                vm.removeclass('disabled').addclass('active');
+                                vm.removeAttr('id');
+                                var _prevcount = $("." + _type + "-count").text();
+                                _prevcount++;
+                                $("." + _type + "-count").text(_prevcount);
+                            }
+                        }
+                    });
+
+                });
+            </script>
 
 
 

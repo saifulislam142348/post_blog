@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('votes', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('post_id');
-            $table->text('message');
+            $table->text('like')->default(0);
             $table->timestamps();
             
             

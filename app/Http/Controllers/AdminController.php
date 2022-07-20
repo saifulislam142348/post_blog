@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Catagory;
 
 class AdminController extends Controller
 {
@@ -18,7 +19,12 @@ class AdminController extends Controller
     return view('admin/commentReplay/index');
    }
    public function catagory(){
-    return view('admin/catagory/index');
+      $catagory = Catagory::all();
+     
+    return view('admin/catagory/index', compact('catagory'));
+   }
+   public function create(){
+    return view('admin/catagory/create');
    }
    public function posts(){
     return view('admin/posts/index');

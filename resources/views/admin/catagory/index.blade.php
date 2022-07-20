@@ -30,7 +30,7 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="card-title">Category List</h3>
-                            <a href="" class="btn btn-primary">Create Category</a>
+                            <a href="{{route('catagorycreate')}}" class="btn btn-primary">Create Category</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -45,15 +45,21 @@
                                 </tr>
                             </thead>
                             <tbody>
+                              @foreach (  $catagory as $item)
+                                  
                               
                                     <tr>
-                                        <td>education</td>
+                                        <td>{{$item->id}}</td>
+                                        <td>{{$item->name}}</td>
                                         <td>
                                         
                                         </td>
+                                        @if (session('status'))
+                                        <h6 class="alert alert-success">{{ session('status') }}</h6>
+                                    @endif
                                         <td class="d-flex">
-                                            <a href="" class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i> </a>
-                                            <form action="" class="mr-1" method="POST">
+                                            <a href="{{url('admin/catagory/edit/'.$item->id)}}" class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i> </a>
+                                            <form action="{{ url('Admin/catagory/index/'.$item->id) }}" class="mr-1" method="POST">
                                                 @method('DELETE')
                                                 @csrf 
                                                 <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-trash"></i> </button>
@@ -61,11 +67,12 @@
                                             {{-- <a href="{{ route('category.show', [$category->id]) }}" class="btn btn-sm btn-success mr-1"> <i class="fas fa-eye"></i> </a> --}}
                                         </td>
                                     </tr>
-                             
+                                    @endforeach
                                     <tr>
+
                                         <td colspan="5">
-                                            <h5 class="text-center">No categories found.</h5>
-                                        </td>
+                                        
+                                          
                                     </tr>
 
                             

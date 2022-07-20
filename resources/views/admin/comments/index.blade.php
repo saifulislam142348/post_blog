@@ -59,7 +59,7 @@
                                         <td>post</td>
                                         <td>catagot</td>
                                         <td>tile</td>
-                                        <td>slug</td>
+                                     
                                         <td>image</td>
                                         <td>descrition</td>
                                         <td>cooment</td>
