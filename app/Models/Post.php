@@ -8,16 +8,28 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(user::class);
+        return $this->belongsTo(User::class,'user_id','id');
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    public function commentReplay()
+    {
+        return $this->hasMany(CommentReplay::class);
     }
     public function catagory()
     {
         return $this->belongsTo(Catagory::class);
     }
-    public function like()
-    {
-        return $this->hasMany(Vote::class, 'post_id')->sum('like');
-    }
+   // Likes
+   public function likes(){
+    return $this->hasMany(Vote::class,'post_id','id')->sum('like');
+}
+// Dislikes
+public function dislikes(){
+    return $this->hasMany(Vote::class ,'post_id','id')->sum('dislike');
+}
 }

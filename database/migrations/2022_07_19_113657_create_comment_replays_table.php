@@ -17,13 +17,15 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('comment_id');
             $table->unsignedBigInteger('user_id');
-            $table->text('message');
+            $table->unsignedBigInteger('post_id');
+            $table->text('replay');
             $table->timestamps();
             
             // Delete all replies on delete comments
             $table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');
             // Delete all comments on delete users
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
     }
 

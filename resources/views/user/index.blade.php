@@ -2,8 +2,8 @@
 
 @section('content')
     <nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color:#3097D1">
-        <a href="index.html" class="navbar-brand"><img src="{{ asset('img/brand-white.png') }}" alt="logo"
-                class="img-fluid" width="80px" height="100px"></a>
+        <a href="index.html" class="navbar-brand"><img src="{{ asset('img/brand-white.png') }}" alt="logo" class="img-fluid"
+                width="80px" height="100px"></a>
 
         <button class="navbar-toggler" data-toggle="collapse" data-target="#responsive"><span
                 class="navbar-toggler-icon"></span></button>
@@ -12,13 +12,12 @@
         <div class="collapse navbar-collapse" id="responsive">
             <ul class="navbar-nav mr-auto text-capitalize">
 
-                <li class="nav-item"><a href="{{ route('user') }}" class="nav-link active">Home <i
-                            class="fas fa-home"></i>
+                <li class="nav-item"><a href="{{ route('user') }}" class="nav-link active">Home <i class="fas fa-home"></i>
                     </a></li>
                 <li class="nav-item"><a href="{{ route('userprofile') }}" class="nav-link active">profile <i
                             class="fas fa-user"></i></a></li>
 
-                <li class="nav-item"><a href="{{ route('usercomment') }}" class="nav-link active">comment <i
+                <li class="nav-item"><a href="{{ route('userprofile') }}" class="nav-link active">comment <i
                             class="far fa-comment"></i></a></li>
                 <li class="nav-item"><a href="{{ route('userReplayView') }}" class="nav-link active">CommentReplay <i
                             class="far fa-comment"></i></a></li>
@@ -523,35 +522,77 @@
 
 
                         </div>
-                        @endforeach
+                     
                         <!-- Gallery -->
 
 
 
                         <div class="jumbotron">
 
-                            <small class="float-left">
-                                <span title="likes" id="savelike" data-type="like" data-post="1"
-                                    class="mr-2 btn btn-sm btn-outline-primary d-inlinefont-weight-bold">like</span>
-
-                                <span class="like-count"></span>
-                            </small>
 
 
+                            <h5 class="card-header">
+                                <span class="comment-count btn btn-sm btn-outline-info"></span>
+                                <small class="float-right">
+                               
+                                        <span title="Likes" id="saveLikeDislike" data-type="like"
+                                            data-post="{{ $item->id }}"
+                                            class="mr-2 btn btn-sm btn-outline-primary d-inline font-weight-bold">
+                                            Like
+                                            <span class="like-count"></span>
+                                        </span>
+                                        <span title="Dislikes" id="saveLikeDislike" data-type="dislike"
+                                            data-type="dislike" data-post="{{ $item->id }}"
+                                            class="mr-2 btn btn-sm btn-outline-danger d-inline font-weight-bold">
+                                            Dislike
+                                            <span class="dislike-count"></span>
+                                        </span>
+                                </small>
+                            </h5>
+                        
                             <button type="button" class="btn btn-primary">
                                 <i class="far fa-comment"></i>
-                                Comment
-                                <a href="{{ route('usercomment') }}"> <span class="badge bg-secondary">
-                                        4</span></a>
+                              
+                               
+                                <a href="{{ url('user/comment/index/'.$item->id) }}"> <span class="badge bg-secondary">
+                                    Comment (4)</span></a>
                             </button>
                             <button type="button" class="btn btn-primary">
 
-                                <a href="{{ route('usercomment') }}"> <span class="badge bg-secondary">
-                                        comment View (4)</span></a>
-
+                            
+                                
+                                <a href="{{ url('user/comment/view/'.$item->id) }}"> <span class="badge bg-secondary">
+                                        comment Replay(4)</span></a>
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                              comment & replay 
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                             <table class=" table  table-striped">
+                                                <tr  class="table-primary">
+                                                    <th scope="col">Comment</th>
+                                              
+                                                    <th scope>Replay</th>
+                                                </tr>
+                                                <tr>
+                                                    <td> {{ ($item->comments[0]->message) }}</td>
+                                                    
+                                                </tr>
+                                                   
+                                              
+                                               
+                                             </table>
+                                            </ul>
+                                          </div>
                             </button>
+ 
+                            
                         </div>
 
+                        <hr>
+                        <hr>
+                      
+                    
                         <hr>
 
 
@@ -559,7 +600,7 @@
 
 
 
-
+                        @endforeach
 
 
 
@@ -578,7 +619,7 @@
 
 
 
-
+             
 
 
 
@@ -593,7 +634,7 @@
 
 
 
-
+  
 
 
             <br> <br> <br><br> <br> <br>
@@ -602,142 +643,114 @@
 
 
 
-
+        @section('script')
             <script>
-                $(document).on('click', '#savelike', function() {
+                // Save Like Or Dislike
+                $(document).on('click', '#saveLikeDislike', function() {
                     var _post = $(this).data('post');
                     var _type = $(this).data('type');
                     var vm = $(this);
-
-                    //ajax
+                    // Run Ajax
                     $.ajax({
-                        url: "{{ url('user/post/like') }}",
+                        url: "{{ url('save-likedislike') }}",
                         type: "post",
-                        datatype: 'json',
+                        dataType: 'json',
                         data: {
                             post: _post,
                             type: _type,
-                            _token: {{ csrf_token() }}
+                            _token: "{{ csrf_token() }}"
                         },
-
-                        beforesend: function() {
-                            vm.addclass('disabled');
+                        beforeSend: function() {
+                            vm.addClass('disabled');
                         },
                         success: function(res) {
                             if (res.bool == true) {
-                                vm.removeclass('disabled').addclass('active');
+                                vm.removeClass('disabled').addClass('active');
                                 vm.removeAttr('id');
-                                var _prevcount = $("." + _type + "-count").text();
-                                _prevcount++;
-                                $("." + _type + "-count").text(_prevcount);
+                                var _prevCount = $("." + _type + "-count").text();
+                                _prevCount++;
+                                $("." + _type + "-count").text(_prevCount);
                             }
                         }
                     });
-
                 });
+                // End
             </script>
+        @endsection
 
 
 
-            <!---------------------------Statrs Right Columns----------------->
+
+        <!---------------------------Statrs Right Columns----------------->
 
 
 
-            <div class="col-12 col-lg-3">
+        <div class="col-12 col-lg-3">
 
 
-                <div class="right-column">
+            <div class="right-column">
 
-                    <div class="card shadow-sm mb-4">
-                        <div class="card-body">
-                            <h6 class="card-title"> Friends list</h6>
-                            <ul>
-                                <li>
-                                    <strong>saiful</strong><span></span>
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h6 class="card-title"> Friends list</h6>
+                        <ul>
+                            <li>
+                                <strong>saiful</strong><span></span>
 
-                                </li>
+                            </li>
 
-                                <li>
-                                    <strong>saiful</strong><span></span>
+                            <li>
+                                <strong>saiful</strong><span></span>
 
-                                </li>
+                            </li>
 
-                                <li>
-                                    <strong>saiful</strong><span></span>
+                            <li>
+                                <strong>saiful</strong><span></span>
 
-                                </li>
+                            </li>
 
-                            </ul>
-
-                        </div>
+                        </ul>
 
                     </div>
 
-
-                    <div class="card shadow-sm mb-4">
-
-                        <div class="card-body">
-
-                            <h6 class="card-title ">Likes <a href="#" class="ml-1"><small>.View All</small> </a>
-                            </h6>
-                            <div class="row no-gutters d-none d-lg-flex">
-                                <div class="col-6 p-1">
-                                    <img src="{{ asset('img/avatar-dhg.png') }}" alt="img" width="80px"
-                                        height="80px" class="rounded-circle mb-4">
-                                    <img src="{{ asset('img/avatar-fat.jpg') }}" alt="img" width="80px"
-                                        height="80px" class="rounded-circle">
+                </div>
 
 
+                <div class="card shadow-sm mb-4">
 
-                                </div>
-                                <div class="col-6 p-1 text-left">
-                                    <h6>Jacob Thornton @fat</h6>
-                                    <a href="#" class="btn btn-outline-info btn-sm mb-3"><i
-                                            class="fas fa-user-friends"></i>Follow </a>
+                    <div class="card-body">
 
-                                    <h6>Mark otto</h6>
-                                    <a href="#" class="btn btn-outline-info  btn-sm"><i
-                                            class="fas fa-user-friends"></i>Follow </a>
+                        <h6 class="card-title ">Likes <a href="#" class="ml-1"><small>.View All</small> </a>
+                        </h6>
+                        <div class="row no-gutters d-none d-lg-flex">
+                            <div class="col-6 p-1">
+                                <img src="{{ asset('img/avatar-dhg.png') }}" alt="img" width="80px"
+                                    height="80px" class="rounded-circle mb-4">
+                                <img src="{{ asset('img/avatar-fat.jpg') }}" alt="img" width="80px"
+                                    height="80px" class="rounded-circle">
 
-                                </div>
+
+
+                            </div>
+                            <div class="col-6 p-1 text-left">
+                                <h6>Jacob Thornton @fat</h6>
+                                <a href="#" class="btn btn-outline-info btn-sm mb-3"><i
+                                        class="fas fa-user-friends"></i>Follow </a>
+
+                                <h6>Mark otto</h6>
+                                <a href="#" class="btn btn-outline-info  btn-sm"><i
+                                        class="fas fa-user-friends"></i>Follow </a>
 
                             </div>
 
                         </div>
 
-
-
-
                     </div>
 
 
 
 
-
-
-
-
-
-
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -754,5 +767,34 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
-    @endsection
+
+
+
+
+
+    </div>
+@endsection

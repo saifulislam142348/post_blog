@@ -33,13 +33,15 @@ Route::get('/', function () {
 Route::get('user/index',[UserController::class ,'index'])->name('user');
 Route::get('user/notification',[UserController::class ,'notification'])->name('notification');
 Route::get('user/profile',[UserController::class ,'profile'])->name('userprofile');
-Route::get('user/comment/index',[UserController::class ,'comment'])->name('usercomment');
+Route::get('user/comment/index/{id}',[UserController::class ,'comment']);
 Route::get('user/commentReplay/index',[UserController::class ,'commentReplay'])->name('usercommentReplay');
 Route::get('user/commentReplay/view',[UserController::class ,'ReplayView'])->name('userReplayView');
 Route::get('user/likeposts',[UserController::class ,'likePosts'])->name('userlikeposts');
 Route::get('user/post/index',[UserController::class ,'post'])->name('userpost');
 Route::post('user/post/index/{id}',[UserController::class ,'votes'])->name('userlike');
 Route::post('user/post/like',[UserController::class ,'like']);
+// Like Or Dislike
+Route::post('save-likedislike',[UserController::class ,'save_likedislike']);
 
 //adminController
 Route::get('Admin/index',[AdminController::class ,'index'])->name('AdminDashboard');
@@ -99,3 +101,12 @@ Route::get('admin/catagory/edit/{id}', [CatagoryController::class, 'edit']);
 //PostController
 
 Route::post('user/post/index', [PostController::class, 'store'])->name('postStore');
+
+//comment controller
+Route::post('user/comment/index', [CommentController::class, 'store'])->name('commentstore');
+Route::get('user/comment/view/{id}', [CommentController::class, 'view']);
+Route::delete('user/comment/view/delete/{id}', [CommentController::class, 'delete']);
+
+//replaycomment
+
+Route::post('user/comment/store', [CommentReplayController::class, 'store'])->name('replaystore');

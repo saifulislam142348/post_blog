@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('user_id');
-            $table->text('message');
+            $table->text('message')->null();
             $table->timestamps();
 
             // Delete all comments on delete posts

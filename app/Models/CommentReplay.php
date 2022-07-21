@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class CommentReplay extends Model
 {
     use HasFactory;
+    public function commentreplay()
+    {
+        return $this->belongsTo(Comment::class);
+    }
+
 }

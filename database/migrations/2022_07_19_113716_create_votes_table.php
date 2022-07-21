@@ -14,13 +14,18 @@ return new class extends Migration
     public function up()
     {
         Schema::create('votes', function (Blueprint $table) {
-            $table->increments('id');
+           
             
+        
+       
+            
+         
+            $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('post_id');
-            $table->text('like')->default(0);
+            $table->integer('post_id');
+            $table->smallInteger('like')->default(0);
+            $table->smallInteger('dislike')->default(0);
             $table->timestamps();
-            
             
             // Delete all comments on delete users
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
