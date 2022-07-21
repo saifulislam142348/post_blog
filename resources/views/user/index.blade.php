@@ -576,7 +576,8 @@
                                                 </tr>
                                                 <tr>
                                                     <td> {{ ($item->comments[0]->message) }}</td>
-                                                    
+                                                    <td> {{ ($item->comments[0]->replies[0]->replay) }}</td>
+                                                   
                                                 </tr>
                                                    
                                               
