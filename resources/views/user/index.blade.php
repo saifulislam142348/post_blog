@@ -329,7 +329,9 @@
 
                             <h5 class="mb-3 card-title">About <small><a href="#" class="ml-1">Edit</a></small>
                             </h5>
-
+ 
+                            <img src="{{ asset($profileimage->image) }}" alt="img" width="120px" height="120px"
+                            class="rounded-circle mt-n5">
                             <p class="card-text"> <i class="fas fa-calendar-week mr-2"></i> Went to <a href="#"
                                     class="text-decoration-none">tangail</a></p>
 
@@ -376,25 +378,26 @@
                             <h5 class="card-title">Photos<small class="ml-2"><a href="#">.Edit </a></small></h5>
 
                             <div class="row">
-                                <div class="col-6 p-1">
-                                    <a href="img/left1.jpg" data-lightbox="id"><img src="{{ asset('img/left1.jpg') }}"
-                                            alt="img" class="img-fluid my-2"></a>
-                                    <a href="img/left2.jpg"data-lightbox="id"><img src="{{ asset('img/left2.jpg') }}"
-                                            alt="img" class="img-fluid my-2"></a>
-                                    <a href="img/left3.jpg"data-lightbox="id"><img src="{{ asset('img/left3.jpg') }}"
-                                            alt="img" class="img-fluid my-2"></a>
+                                
 
+
+                                <div class="col-6 p-1">
+                              <small><b>Profile</b> </small>
+                                    @foreach (Auth::user()->profileImages as $item)
+                                    <a href="" data-lightbox="id">
+                                        <img src="{{asset($item->image)}}"
+                                            alt="img" class="img-fluid "></a>
+                                            @endforeach
+                                   
                                 </div>
-
-
                                 <div class="col-6 p-1">
-                                    <a href="img/left4.jpg"data-lightbox="id"><img src="{{ asset('img/left4.jpg') }}"
-                                            alt="img" class="img-fluid my-2"></a>
-                                    <a href="img/left5.jpg"data-lightbox="id"><img src="{{ asset('img/left5.jpg') }}"
-                                            alt="img" class="img-fluid my-2"></a>
-                                    <a href="img/left6.jpg"data-lightbox="id"><img src="{{ asset('img/left6.jpg') }}"
-                                            alt="img" class="img-fluid my-2"></a>
-
+                                    <small><b>background</b> </small>
+                                    @foreach (Auth::user()->backgroundImages as $item)
+                                    <a href="" data-lightbox="id">
+                                        <img src="{{asset($item->image)}}"
+                                            alt="img" class="img-fluid "></a>
+                                            @endforeach
+                                   
                                 </div>
 
                             </div>
@@ -469,8 +472,9 @@
                     <div class="card-body">
                         @foreach ( $post as $item)
                             <div class="media">
-                                <img src="{{ asset('img/avatar-dhg.png') }}" alt="img" width="55px"
-                                    height="55px" class="rounded-circle mr-3">
+                                
+                                <img src="{{ asset($profileimage->image) }}" alt="img" width="120px" height="120px"
+                                class="rounded-circle mt-n5">
 
                                 <div class="media-body">
                                     <h5> {{ Auth::user()->name }}</h5>
@@ -719,40 +723,8 @@
 
 
 
-        @section('script')
-            <script>
-                // Save Like Or Dislike
-                $(document).on('click', '#saveLikeDislike', function() {
-                    var _post = $(this).data('post');
-                    var _type = $(this).data('type');
-                    var vm = $(this);
-                    // Run Ajax
-                    $.ajax({
-                        url: "{{ url('save-likedislike') }}",
-                        type: "post",
-                        dataType: 'json',
-                        data: {
-                            post: _post,
-                            type: _type,
-                            _token: "{{ csrf_token() }}"
-                        },
-                        beforeSend: function() {
-                            vm.addClass('disabled');
-                        },
-                        success: function(res) {
-                            if (res.bool == true) {
-                                vm.removeClass('disabled').addClass('active');
-                                vm.removeAttr('id');
-                                var _prevCount = $("." + _type + "-count").text();
-                                _prevCount++;
-                                $("." + _type + "-count").text(_prevCount);
-                            }
-                        }
-                    });
-                });
-                // End
-            </script>
-        @endsection
+       
+        
 
 
 
