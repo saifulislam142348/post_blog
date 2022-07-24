@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id')->null();
             $table->string('title');
-          $table->string('image');
+            $table->string('image');
             $table->mediumText('body');
             $table->boolean('status')->default(0);
             $table->timestamps();

@@ -9,6 +9,8 @@ use App\Models\Post;
 use App\Models\Vote;
 use App\Models\CommentReplay;
 use App\Models\Comment;
+use App\Models\ProfileImage;
+use App\Models\backgroundImage;
 use Auth;
 
 class UserController extends Controller
@@ -17,11 +19,13 @@ class UserController extends Controller
      // $commentreplay = CommentReplay::where('comment_id','id')->get();
       //dd($commentreplay);
         $post = Post::get();
-       
+       $profileimage= ProfileImage::latest()->first();
+    //    dd($profileimage);
+       $backgroundimage= backgroundImage::latest()->first();
 
 
       
-        return view('user/index', compact('post' ));
+        return view('user/index', compact('post','profileimage','backgroundimage' ));
       
     }
     public function votes($id){

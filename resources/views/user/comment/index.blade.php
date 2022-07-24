@@ -47,14 +47,14 @@
 
 
                                     <div class="mb-3">
-                                        <label class="form-label">post_id</label>
-                                        <input type="text" name="post_id" class="form-control"
+                                      
+                                        <input type="hidden" name="post_id" class="form-control"
                                             value="{{ $post->id }}">
 
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">user_id</label>
-                                        <input type="text" name="user_id" class="form-control"
+                                        
+                                        <input type="hidden" name="user_id" class="form-control"
                                             value="{{ $post->user_id }}">
 
                                     </div>

@@ -112,4 +112,13 @@ Route::post('user/comment/store', [CommentReplayController::class, 'store'])->na
 
 
 // ProfileimageController
-Route::post('user/index/profile/image/store', [ProfileImageController::class, 'store'])->name('profileImage');
+Route::get('user/image/profile/add', [ProfileImageController::class, 'add'])->name('profil.image');
+Route::get('user/image/profile/edit', [ProfileImageController::class, 'edit'])->name('profile.imageEdit');
+Route::post('user/image/profile/image/store', [ProfileImageController::class, 'store'])->name('profile.imageStore');
+
+
+
+// backgroundimageController
+Route::get('user/image/background/add', [BackgroundImageController::class, 'add'])->name('background.image');
+Route::get('user/image/background/edit', [BackgroundImageController::class, 'edit'])->name('background.imageEdit');
+Route::post('user/image/background/image/store', [BackgroundImageController::class, 'store'])->name('background.imageStore');

@@ -52,8 +52,8 @@
                                                 @csrf
 
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <span class="input-group-text">user id</span>
-                                                    <input type="text" name="user_id" value="1"
+                                                
+                                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}"
                                                         class="form-control">
 
                                                 </div>
