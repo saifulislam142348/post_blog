@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\Vote;
 use App\Models\CommentReplay;
 use App\Models\Comment;
+use Auth;
 
 class UserController extends Controller
 {

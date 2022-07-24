@@ -245,7 +245,7 @@
                 </div>
             </div>
 
-
+        
         </div>
 
 
@@ -270,14 +270,38 @@
 
 
                     <div class="card card-left1 mb-4">
-                        <img src="{{ asset('img/photo-1455448972184-de647495d428.jpg') }}" alt=""
-                            class="card-img-top img-fluid">
+                       
+                            <div class="dropdown">
+                                <a href="#"  data-bs-toggle="dropdown" >
+                                    <img src="{{ asset('img/photo-1455448972184-de647495d428.jpg') }}" alt=""
+                                    class="card-img-top img-fluid">
+                                </a>
+                                <ul class="dropdown-menu" >
+                                    <li><a class="dropdown-item btn btn-outline-info " href="#">Add</a></li>
+                                    <li><a class="dropdown-item btn btn-outline-info " href="#">Edit</a></li>
+                                    <li><a class="dropdown-item btn btn-outline-info " href="#">Delete</a></li>
+
+                                </ul>
+                            </div>
                         <div class="card-body text-center ">
-                            <img src="{{ asset('img/avatar-dhg.png') }}" alt="img" width="120px" height="120px"
-                                class="rounded-circle mt-n5">
-                            <h5 class="card-title">Dave Gamache</h5>
-                            <p class="card-text text-justify mb-2">I wish i was a little bit taller, wish i was a baller,
-                                wish i had a girl… also.</p>
+                         
+
+                                <div class="dropdown">
+                                    <a  href="#"  data-bs-toggle="dropdown" >
+                                        <img src="{{ asset('img/avatar-dhg.png') }}" alt="img" width="120px" height="120px"
+                                        class="rounded-circle mt-n5">
+                                    </a>
+
+                                    <ul class="dropdown-menu" >
+                                        <li><a class="dropdown-item btn btn-outline-info " href="#">Add</a></li>
+                                        <li><a class="dropdown-item btn btn-outline-info " href="#">Edit</a></li>
+                                        <li><a class="dropdown-item btn btn-outline-info " href="#">Delete</a></li>
+
+                                    </ul>
+                                </div>
+                            <h5 class="card-title"> {{ Auth::user()->name }}</h5>
+                            <p class="card-text text-justify mb-2">
+                                {{ Auth::user()->about }}</p>
                             <ul class="list-unstyled nav justify-content-center">
                                 <a href="#" class="text-dark text-decoration-none">
                                     <li class="nav-item">Friends <br> <strong>12M</strong></li>
@@ -313,6 +337,20 @@
                                     class="text-decoration-none">Mirpur</a></p>
                             <p class="card-text"> <i class="fas fa-map-marker mr-2"></i> From <a href="#"
                                     class="text-decoration-none">Rupnagor</a></p>
+                            <p class="card-text"> <i class="fas fa-map-marker mr-2"></i> From <a href="#"
+                                    class="text-decoration-none">      <div class="" aria-labelledby="navbarDropdown">
+                                        <a class="" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+    
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            </a></p>
 
 
 
@@ -425,18 +463,18 @@
 
 
                     <div class="card-body">
-                        @foreach ($post as $item)
+                        @foreach ( $post as $item)
                             <div class="media">
                                 <img src="{{ asset('img/avatar-dhg.png') }}" alt="img" width="55px"
                                     height="55px" class="rounded-circle mr-3">
 
                                 <div class="media-body">
-                                    <h5>{{ $item->user_id }}</h5>
+                                    <h5> {{ Auth::user()->name }}</h5>
 
                                     <ul class="bg-green">
                                         <ol><small>Time:{{ $item->created_at }}</small></ol>
                                         <ol><small>Title:{{ $item->title }}</small></ol>
-                                        <ol><small>Title:education</small></ol>
+                                        <ol><small>catagory:education</small></ol>
 
 
                                     </ul>
@@ -570,17 +608,50 @@
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                              <table class=" table  table-striped">
                                                 <tr  class="table-primary">
+                                                
                                                     <th scope="col">Comment</th>
-                                              
-                                                    <th scope>Replay</th>
+                                                  
                                                 </tr>
                                                 <tr>
-                                                    <td> {{ ($item->comments[0]->message) }}</td>
-                                                    <td> {{ ($item->comments[0]->replies[0]->replay) }}</td>
-                                                   
+                                                 
+                                                    
                                                 </tr>
-                                                   
-                                              
+                                                 
+                                                   <tr>
+                                                    @foreach ($item->comments as $item)
+                                                    <tr>   
+                                                        <td>{{$item->message}}
+                                                        </td>
+                                                         
+                                                        <td> 
+                                                        
+                                                            <th scope>Replay</th>
+                                                        
+                                                          
+                                                                @foreach ($item->replies as $it)
+                                                                
+                                                                
+                                                           <td>
+                                                            <ul>
+                                                                <li>
+                                                                    {{$it->replay}}
+                                                                </li>
+                                                            </ul>
+                                                         
+                                                     
+                                                           </td>
+                                                                  
+                                                            
+                                                                @endforeach
+                                                                
+                                                            </tr>  
+                                                       </td>
+                                                  
+                                                    </tr>
+                                                 
+                                                     
+                                                   @endforeach
+                                                   </tr>
                                                
                                              </table>
                                             </ul>

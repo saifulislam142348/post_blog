@@ -7,6 +7,8 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CommentReplayController;
 use App\Http\Controllers\CatagoryController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileImageController;
+use App\Http\Controllers\BackgroundImageController;
 
 use App\Http\Controllers\HomeController;
 
@@ -84,14 +86,11 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::middleware(['auth', 'user-access:manager'])->group(function () {
-  
-    Route::get('/manager/home', [HomeController::class, 'managerHome'])->name('manager.home');
-});
+
  
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //catagory controller
 Route::post('Admin/catagory/create', [CatagoryController::class, 'store'])->name('catagoryStore');
@@ -110,3 +109,7 @@ Route::delete('user/comment/view/delete/{id}', [CommentController::class, 'delet
 //replaycomment
 
 Route::post('user/comment/store', [CommentReplayController::class, 'store'])->name('replaystore');
+
+
+// ProfileimageController
+Route::post('user/index/profile/image/store', [ProfileImageController::class, 'store'])->name('profileImage');

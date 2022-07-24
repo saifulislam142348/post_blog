@@ -12,6 +12,20 @@
                             <a href="{{ route('AdminDashboard') }}"></a> Dashboard
 
                         </button>
+                        <button class="btn btn-danger" type="button">
+                            <div class="" aria-labelledby="navbarDropdown">
+                                <a class="" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        </button>
 
                     </div>
 

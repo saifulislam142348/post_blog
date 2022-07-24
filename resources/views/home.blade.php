@@ -6,16 +6,55 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
-  
+
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                    @if(auth()->user()->is_admin == 'admin')
+                    <a href="{{route('AdminDashboard')}}">Admin</a>
+                    @else
+                    <div class="jumbotro">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card-body">
+
+                                    <h5 class="mb-3 card-title">About <small><a href="#" class="ml-1">Edit</a></small>
+                                    </h5>
+        
+                                    <p class="card-text"> <i class="fas fa-user mr-2"></i> Name <a href="#"
+                                            class="text-decoration-none"> {{ Auth::user()->name }}</a></p>
+                                    <p class="card-text"> <i class="fas fa-user mr-2"></i> E-mail <a href="#"
+                                            class="text-decoration-none"> {{ Auth::user()->email }}</a></p>
+                                    <p class="card-text"> <i class="fas fa-calendar-week mr-2"></i> Went to <a href="#"
+                                            class="text-decoration-none"> {{ Auth::user()->about }}</a></p>
+        
+                               
+                             
+                                    <p class="card-text"> <i class="fas fa-user mr-2"></i> type <a href="#"
+                                            class="text-decoration-none"> {{ Auth::user()->type }}</a></p>
+                                   
+                                        
+                                
+        
+        
+        
+        
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <h2>
+                                    <div class="jumbotron bg-dark">
+                                        <a  class="btn btn-outline-success form-control" href="{{route('user')}}">Post & view</a>
+                                    </div>
+                                </h2>
+                              
+
+                               
+                            </div>
                         </div>
+                    </div>
+                 
                     @endif
-  
-                    You are a User.
                 </div>
+                
             </div>
         </div>
     </div>
