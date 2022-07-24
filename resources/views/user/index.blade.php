@@ -14,7 +14,7 @@
 
                 <li class="nav-item"><a href="{{ route('user') }}" class="nav-link active">Home <i class="fas fa-home"></i>
                     </a></li>
-                <li class="nav-item"><a href="{{ route('userprofile') }}" class="nav-link active">profile <i
+                <li class="nav-item"><a href="{{ route('home') }}" class="nav-link active">profile <i
                             class="fas fa-user"></i></a></li>
 
                 <li class="nav-item"><a href="{{ route('userprofile') }}" class="nav-link active">comment <i
@@ -273,7 +273,7 @@
                        
                             <div class="dropdown">
                                 <a href="#"  data-bs-toggle="dropdown" >
-                                    <img src="{{ asset($backgroundimage->image)  }}" alt=""
+                                    <img src=" {{ asset($backgroundimage->image)  }}" 
                                     class="card-img-top img-fluid">
                                 </a>
                                 <ul class="dropdown-menu" >
@@ -303,7 +303,6 @@
 
                                     </ul>
                                 </div>
-                                
                             <h5 class="card-title"> {{ Auth::user()->name }}</h5>
                             <p class="card-text text-justify mb-2">
                                 {{ Auth::user()->about }}</p>
@@ -470,7 +469,7 @@
                     <div class="card-body">
                         @foreach ( $post as $item)
                             <div class="media">
-                                <img src="{{ asset($profileimage->image) }}" alt="img" width="55px"
+                                <img src="{{ asset('img/avatar-dhg.png') }}" alt="img" width="55px"
                                     height="55px" class="rounded-circle mr-3">
 
                                 <div class="media-body">

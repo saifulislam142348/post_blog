@@ -20,10 +20,10 @@ class UserController extends Controller
       //dd($commentreplay);
         $post = Post::get();
        $profileimage= ProfileImage::latest()->first();
-    //    dd($profileimage);
+
        $backgroundimage= backgroundImage::latest()->first();
 
-
+    
       
         return view('user/index', compact('post','profileimage','backgroundimage' ));
       

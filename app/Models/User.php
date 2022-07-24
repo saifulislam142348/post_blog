@@ -44,4 +44,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function profileImages()
+    {
+        return $this->hasMany(ProfileImage::class);
+    }
+    public function backgroundImages()
+    {
+        return $this->hasMany(BackgroundImage::class);
+    }
 }

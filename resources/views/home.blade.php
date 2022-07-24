@@ -18,6 +18,8 @@
 
                                     <h5 class="mb-3 card-title">About <small><a href="#" class="ml-1">Edit</a></small>
                                     </h5>
+                          
+                                   
         
                                     <p class="card-text"> <i class="fas fa-user mr-2"></i> Name <a href="#"
                                             class="text-decoration-none"> {{ Auth::user()->name }}</a></p>
@@ -40,6 +42,15 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
+                                <div class="jumbotron">
+                                    @foreach (Auth::user()->profileImages as $item)
+                                    <img src="{{asset($item->image)}}"  width="55px"
+                                    height="55px" >
+                                        
+                                    @endforeach
+                                  
+                                  
+                                </div>
                                 <h2>
                                     <div class="jumbotron bg-dark">
                                         <a  class="btn btn-outline-success form-control" href="{{route('user')}}">Post & view</a>
