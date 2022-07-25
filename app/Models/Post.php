@@ -24,12 +24,12 @@ class Post extends Model
     {
         return $this->belongsTo(Catagory::class);
     }
-   // Likes
-   public function likes(){
-    return $this->hasMany(Vote::class,'post_id','id')->sum('like');
-}
-// Dislikes
-public function dislikes(){
-    return $this->hasMany(Vote::class ,'post_id','id')->sum('dislike');
-}
+  // Likes
+    public function likes(){
+        return $this->hasMany(LikeDislike::class ,'post_id')->sum('like');
+    }
+    // Dislikes
+    public function dislikes(){
+        return $this->hasMany(LikeDislike::class ,'post_id')->sum('dislike');
+    }
 }

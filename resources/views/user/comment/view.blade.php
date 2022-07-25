@@ -38,8 +38,7 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th style="width: 10px">user_id</th>
-                                        <th style="width: 10px">post_id</th>
+                                        
                                         <th>comment</th>
 
                                         <th style="width: 40px">Action</th>
@@ -48,8 +47,7 @@
                                 <tbody>
 
                                     <tr>
-                                        <td>{{ $post->user_id }}</td>
-                                        <td>{{ $post->id }}</td>
+                                        
                                         <td>
                                             <ul>
                                                 @foreach ($post->comments->toArray() as $item)

@@ -33,13 +33,14 @@
                     @foreach ($post as $item)
                         <div class="media">
 
-                            <img src="{{ asset($profileimage->image) }} " alt="img" width="120px" height="120px"
+                        
+                            <img src="{{ asset($item->users->profileImages[count($item->users->profileImages) - 1]->image) }} " alt="img" width="120px" height="120px"
                                 class="rounded-circle border border-success mt-n5 my-3">
                                 
                             <div class="media-body">
                                 <div>
                                     <span>
-                                        <h5> dd</h5>
+                                        <h5> {{$item->users->name}}</h5>
                                     </span>
                                     <ul class="bg-green">
                                         <ol><small>Time:{{ $item->created_at }}</small></ol>
@@ -83,30 +84,15 @@
 
                         <!------------------------------posts--------------->
                         <div class="jumbotron">
-                            <h5 class="card-header">
-                                <span class="comment-count btn btn-sm btn-outline-info"></span>
-                                <small class="float-right">
-
-                                    <span title="Likes" id="saveLikeDislike" data-type="like"
-                                        data-post="{{ $item->id }}"
-                                        class="mr-2 btn btn-sm btn-outline-primary d-inline font-weight-bold">
-                                        Like
-                                        <span class="like-count"></span>
-                                    </span>
-                                    <span title="Dislikes" id="saveLikeDislike" data-type="dislike" data-type="dislike"
-                                        data-post="{{ $item->id }}"
-                                        class="mr-2 btn btn-sm btn-outline-danger d-inline font-weight-bold">
-                                        Dislike
-                                        <span class="dislike-count"></span>
-                                    </span>
-                                </small>
-                            </h5>
+                           <div>
+                           
+                           </div>
 
                             <button type="button" class="btn btn-primary">
                                 <i class="far fa-comment"></i>
 
 
-                                <a href="{{ url('user/comment/index/' . $item->id) }}"> <span class="badge bg-secondary">
+                                <a href="{{ url('user/comment/index/' . $item->id) }}"> <span class="badge bg-secondary " data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         Comment (4)</span></a>
                             </button>
                             <button type="button" class="btn btn-primary">
