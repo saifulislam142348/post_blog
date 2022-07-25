@@ -18,7 +18,7 @@ class UserController extends Controller
     public function index(){
      // $commentreplay = CommentReplay::where('comment_id','id')->get();
       //dd($commentreplay);
-        $post = Post::get();
+        $post = Post::latest()->get();
        $profileimage= ProfileImage::latest()->first();
     
       $users=User::where('type','user')->get();

@@ -7,6 +7,7 @@ use App\Models\backgroundImage;
 
 class BackgroundImageController extends Controller
 {
+   
     public function add(){
         return view('user/image/background/add');
     }

@@ -11,6 +11,7 @@ class CatagoryController extends Controller
 {
     public function store(Request $request)
     {
+       
         $rules=[
             'name'=>'required',
          

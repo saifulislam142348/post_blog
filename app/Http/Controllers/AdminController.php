@@ -4,12 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Catagory;
+use App\Models\Post;
+use App\Models\user;
+use App\Models\ProfileImage;
+use App\Models\BackgroundImage;
+use App\Models\Comment;
+use App\Models\CommentReplay;
 use Auth;
 
 class AdminController extends Controller
 {
+  
    public function index(){
-    return view('admin/index');
+
+      $post =Post::get();
+      $catagory =Catagory::get();
+      $profileImage =ProfileImage::get();
+      $BpbackgroundImage =BackgroundImage::get();
+      $user = User::get();
+      $comment =Comment::get();
+      $commentReplay =CommentReplay::get();
+    return view('admin/index', compact('post','catagory','profileImage','backgroundImage','user'));
    }
 
    public function comment(){

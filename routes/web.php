@@ -100,6 +100,9 @@ Route::get('admin/catagory/edit/{id}', [CatagoryController::class, 'edit']);
 //PostController
 
 Route::post('user/post/index', [PostController::class, 'store'])->name('postStore');
+Route::delete('user/post/delete/{id}', [PostController::class, 'delete']);
+Route::get('user/post/edit/{id}', [PostController::class, 'edit']);
+Route::put('user/post/index/update/{id}', [PostController::class, 'update'])->name('update');
 
 //comment controller
 Route::post('user/comment/index', [CommentController::class, 'store'])->name('commentstore');

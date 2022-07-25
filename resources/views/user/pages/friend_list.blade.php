@@ -4,22 +4,7 @@
     <div class="right-column">
 
         <div class="card shadow-sm mb-4">
-            <div class="card-body">
-                <h6 class="card-title"> Friends list</h6>
-                <ul>
-                    @foreach ($users as $item)
-                        <li>
-                        
-                           <h2> {{ $item->name }} <button class="btn btn-success">friend</button></h2>
-                      
-                               
-                         
-                           
-                        </li>
-                    @endforeach
-                </ul>
-
-            </div>
+          
 
         </div>
 

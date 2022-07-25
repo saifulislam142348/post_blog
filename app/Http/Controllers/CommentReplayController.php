@@ -8,6 +8,10 @@ use App\Models\CommentReplay;
 
 class CommentReplayController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function store(Request $request){
         $rules=[
             'replay'=>'required',

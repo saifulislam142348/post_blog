@@ -40,16 +40,14 @@
                                     <div class="card">
 
                                         <div class="card-body">
-                                            @if (session('status'))
-                                                <h6 class="alert alert-success">{{ session('status') }}</h6>
+                                            @if (session('edit'))
+                                                <h6 class="alert alert-success">{{ session('edit') }}</h6>
                                             @endif
                                           
-                                        @foreach ($errors->all() as $error)
-                                        <span class="text-danger">{{ $error }}</span>
-                                     @endforeach
-                                        
-                                            <form action="{{route('postStore')}}" method="POST" enctype="multipart/form-data">
+                                      
+                                            <form action="{{url('user/post/index/update/'.$post->id)}}" method="POST" enctype="multipart/form-data">
                                                 @csrf
+                                                @method('put')
 
                                                 <div class="input-group input-group-sm mb-3">
                                                 
@@ -61,7 +59,7 @@
                                                 <div class="input-group input-group-sm mb-3">
                                                     <span class="input-group-text">Catagory Select</span>
                                                     <select class="form-control" name="category_id">
-                                                        <option selected>Open this select menu</option>
+                                                        <option selected value="$post->catagory_id">Open this select menu</option>
                                                         @foreach ($catagory as $item)
                                                             <option value="{{ $item->id }}"> {{ $item->name }}</option>
                                                         @endforeach
@@ -72,7 +70,8 @@
                                                 </div>
                                                 <div class="input-group input-group-sm mb-3">
                                                     <span class="input-group-text">Title</span>
-                                                    <input type="text" name="title" class="form-control">
+
+                                                    <input type="text" name="title" value="{{$post->title}}" class="form-control">
 
                                                 </div>
 
@@ -81,14 +80,14 @@
                                                  
                                                     <br>
                                                     <input class="form-control input-group-sm " type="file" name="image">
-
+                                                  <img src="{{asset($post->image)}}" style="height: 60px " alt="">
                                                    
                                                 </div>
                                               
                                               
                                                 <div class="input-group input-group-sm mb-3">
                                                     <span class="input-group-text">Body</span>
-                                                    <textarea type="text" name="body" class="form-control"></textarea>
+                                                    <textarea type="text" name="body" value ="{{$post->body}}" class="form-control"></textarea>
 
                                                 </div>
 
@@ -107,7 +106,7 @@
 
                             </table>
                         </div>
-                        
+                     
                         <!-- /.card-body -->
                         <div class="card-footer d-flex justify-content-center">
 
