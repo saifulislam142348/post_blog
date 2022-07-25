@@ -42,7 +42,14 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
+                                <h2>
+                                    <div class="jumbotron bg-dark">
+                                        <a  class="btn btn-outline-success form-control" href="{{route('user')}}">Post & view</a>
+                                    </div>
+                                </h2>
+                              
                                 <div class="jumbotron">
+                                    <h6><small>All Profile Image upload</small></h6>
                                     @foreach (Auth::user()->profileImages as $item)
                                     <img src="{{asset($item->image)}}"  width="55px"
                                     height="55px" >
@@ -51,11 +58,6 @@
                                   
                                   
                                 </div>
-                                <h2>
-                                    <div class="jumbotron bg-dark">
-                                        <a  class="btn btn-outline-success form-control" href="{{route('user')}}">Post & view</a>
-                                    </div>
-                                </h2>
                               
 
                                

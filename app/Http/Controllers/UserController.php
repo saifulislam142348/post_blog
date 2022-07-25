@@ -20,12 +20,14 @@ class UserController extends Controller
       //dd($commentreplay);
         $post = Post::get();
        $profileimage= ProfileImage::latest()->first();
+    
+      $users=User::where('type','user')->get();
 
        $backgroundimage= backgroundImage::latest()->first();
 
     
       
-        return view('user/index', compact('post','profileimage','backgroundimage' ));
+        return view('user/index', compact('post','profileimage','backgroundimage','users' ));
       
     }
     public function votes($id){

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProfileImage extends Model
 {
     use HasFactory;
+    public function users(){
+        return $this->belogsTo(User::class, 'user_id','id');
+    }
 }
