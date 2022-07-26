@@ -20,12 +20,12 @@
           
             <img src="{{asset($item->image)}}"  style=" height:60px; weight:50px;" alt="">
            
-                <!-----<form action="{{url('admin/photo/delete/'.$item->id)}}" method="POST">
+                <form action="{{url('admin/photo/delete/'.$item->id)}}" method="POST">
                   @method('DELETE')
                   @csrf
                   <button type="submit" class="btn btn-sm btn-danger"> delete<i class="fas fa-trash"></i> </button>
                 </form>
-            ----->
+            
           <br>
             @endforeach
          

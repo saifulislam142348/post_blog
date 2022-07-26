@@ -33,7 +33,7 @@ class CommentController extends Controller
     $comment->save();
 
 
-return back()->with('status', 'public comment  successfully');
+return redirect('user/index')->with('status', 'public comment  successfully');
    }
 
 

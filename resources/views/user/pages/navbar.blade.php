@@ -16,8 +16,10 @@
 
             <li class="nav-item"><a href="#" class="nav-link active">comment <i
                         class="far fa-comment"></i></a></li>
-            <li class="nav-item"><a href="#" class="nav-link active">CommentReplay <i
+            <li class="nav-item"><a href="#" class="nav-link active"> All Post <i
                         class="far fa-comment"></i></a></li>
+            <li class="nav-item"><a href="#" class="nav-link active">Catagory post <i
+                        class="far fa-post"></i></a></li>
 
             <li class="nav-item"><a href="#" class="nav-link active">likePosts <i
                         class="fa fa-thumbs-up"></i></a></li>
@@ -29,14 +31,48 @@
             <input type="text" name="search" id="search" placeholder="Search"
                 class="form-control form-control-sm">
         </form>
-        <a href="notification.html" class="text-decoration-none" style="color:#CBE4F2;font-size:22px;"><i
-                class="far fa-bell ml-3 d-none d-md-block"></i></a>
-        <img src="{{ asset('img/avatar-dhg.png') }}" alt="" class="rounded-circle ml-3 d-none d-md-block"
-            width="32px" height="32px">
+
+    
 
 
 
 
+        <!------------------------------->
+
+        @if (!Auth::user()->profileimages->isEmpty())
+        <div class="dropdown">
+
+            <a href="#" data-bs-toggle="dropdown">
+
+                <img src="{{ asset(Auth::user()->profileimages->first()->image) }} " alt="img"
+                    width="60px" height="60px"
+                    class="rounded-circle card-img-top border border-success mt-n5 my-3">
+            </a>
+
+
+
+        </div>
+    @else
+        <div class="dropdown">
+
+            <a href="#" data-bs-toggle="dropdown">
+
+                <img src="{{ asset('img/no_image.jpg') }} " alt="img" width="60px" height="60px"
+                    class="rounded-circle card-img-top border border-success mt-n5 my-3">
+            </a>
+
+
+
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item btn btn-outline-info " href="{{ route('profil.image') }}">Add</a>
+                </li>
+
+
+            </ul>
+        </div>
+    @endif
+
+        <!------------------------------->
 
     </div>
 

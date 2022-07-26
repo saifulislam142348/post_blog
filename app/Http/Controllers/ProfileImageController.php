@@ -7,6 +7,10 @@ use App\Models\ProfileImage;
 
 class ProfileImageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function add(){
         return view('user/image/profile/add');
@@ -27,7 +31,7 @@ class ProfileImageController extends Controller
             $profileImage->image = $filename;
         }
         $profileImage->save();
-       return back()->with('status','Profile image upload succefully');
+       return redirect('user/index')->with('status','Profile image upload succefully');
 
     }
 }

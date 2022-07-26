@@ -94,7 +94,7 @@
                 <a href="#" class="text-dark text-decoration-none">
                     <li class="nav-item"> <br> <strong>
                             <button class="btn btn-info">
-                                <span><b>Friends:</b> </span>
+                                <span><b>All users:</b> </span>
                          
                              {{$users->count()}}
                            

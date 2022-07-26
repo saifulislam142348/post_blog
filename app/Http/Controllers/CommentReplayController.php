@@ -31,6 +31,6 @@ class CommentReplayController extends Controller
         $CommentReplay->save();
     
     
-    return back()->with('status', 'Replay  successfully');
+    return redirect('user/index')->with('status', 'Replay  successfully');
        }
 }

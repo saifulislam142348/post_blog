@@ -17,7 +17,7 @@
                                         <div class="card-body">
 
                                             <h5 class="mb-3 card-title">About <small><a href="#"
-                                                        class="ml-1">Edit</a></small>
+                                                       
                                             </h5>
 
 
@@ -44,15 +44,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="jumbotron">
-                                            <a class="btn  btn-light btn-outline-info"
-                                                href="{{ route('profil.image') }}">profile Image Add</a>
-                                              <hr>
-                                            <a
-                                                class=" btn btn-light btn-outline-info "href="{{ route('background.image') }}">background
-                                                image add</a>
-                                        </div>
-
+                                       
 
                                         <h2>
                                             <div class="jumbotron bg-dark">
@@ -61,20 +53,45 @@
                                             </div>
                                         </h2>
 
-                                        <div class="jumbotron">
-                                            <h6><small>All Profile Image upload</small></h6>
-                                            @foreach (Auth::user()->profileImages as $item)
-                                                <img src="{{ asset($item->image) }}" width="55px" height="55px">
-                                            @endforeach
-
-
-                                        </div>
+                                      
 
                                     </div>
                                 </div>
                             </div>
                         @endif
                     </div>
+                    
+                         
+                        <div class="jumbotron">
+                            <div class="row">
+                               
+                                <div class="col-lg-6">
+                                    <div class="jumbotron">
+                                    
+                                        @foreach (Auth::user()->profileImages as $item)
+                                      
+                                            <img src="{{ asset($item->image) }}" class="rounded-circle card-img-top border border-success mt-n5 my-3"  width="40px" height="60px">
+                                        @endforeach
+                                    </div>
+                                   
+                                </div>
+                                <div class="col-lg-6">
+                                      <div class="jumbotron">
+                                     
+                            
+                                        @foreach (Auth::user()->backgroundImages as $item)
+                                            <img src="{{ asset($item->image) }}" class=" card-img-top border border-success mt-n5 my-3" width="40px" height="60px">
+                                        @endforeach
+            
+                                      </div>
+                          
+                                </div>
+                            </div>
+                           
+
+
+                        </div>
+                  
 
                 </div>
             </div>

@@ -43,7 +43,7 @@ class PostController extends Controller
        $post->save();
   
 
-   return back()->with('status', 'Your post has been successfully');
+   return redirect('user/index')->with('status', 'Your post has been successfully');
  }
 }
 public function delete($id){
@@ -78,7 +78,7 @@ public function update(Request $request , $id){
            $post->image=$data;
            $post->update();
 
-           return back()->with('edit', 'Your post has been  update successfully');
+           return redirect('user/index')->with('edit', 'Your post has been  update successfully');
 
             
 
