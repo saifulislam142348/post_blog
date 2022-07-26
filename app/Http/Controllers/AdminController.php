@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Catagory;
 use App\Models\Post;
-use App\Models\user;
+use App\Models\User;
 use App\Models\ProfileImage;
 use App\Models\BackgroundImage;
 use App\Models\Comment;
@@ -15,15 +15,18 @@ use Auth;
 class AdminController extends Controller
 {
   
+  
    public function index(){
 
       $post =Post::get();
       $catagory =Catagory::get();
       $profileImage =ProfileImage::get();
       $BpbackgroundImage =BackgroundImage::get();
-      $user = User::get();
+      $user = User::where('type','user')->get();
+      dd($user);
       $comment =Comment::get();
       $commentReplay =CommentReplay::get();
+     // dd($user);
     return view('admin/index', compact('post','catagory','profileImage','backgroundImage','user'));
    }
 

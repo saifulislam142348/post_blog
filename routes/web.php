@@ -9,6 +9,7 @@ use App\Http\Controllers\CatagoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileImageController;
 use App\Http\Controllers\BackgroundImageController;
+use App\Http\Controllers\AdminDeleteController;
 
 use App\Http\Controllers\HomeController;
 
@@ -125,3 +126,9 @@ Route::post('user/image/profile/image/store', [ProfileImageController::class, 's
 Route::get('user/image/background/add', [BackgroundImageController::class, 'add'])->name('background.image');
 Route::get('user/image/background/edit', [BackgroundImageController::class, 'edit'])->name('background.imageEdit');
 Route::post('user/image/background/image/store', [BackgroundImageController::class, 'store'])->name('background.imageStore');
+
+//AdminDeleteController
+route::delete('admin/user/delete/{id}', [AdminDeleteController::class ,'user']);
+route::delete('admin/post/delete/{id}', [AdminDeleteController::class ,'post']);
+route::delete('admin/catagory/delete/{id}', [AdminDeleteController::class ,'catagory']);
+route::delete('admin/photo/delete/{id}', [AdminDeleteController::class ,'photo']);

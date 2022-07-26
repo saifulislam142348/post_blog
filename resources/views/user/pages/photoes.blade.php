@@ -10,10 +10,11 @@
 
                                 <div class="col-6 p-1">
                                     <small><b>Profile</b> </small>
-                                    @foreach (Auth::user()->profileImages as $item)
+                                    {{-- @foreach (Auth::user()->profileImages as $item)
                                         <a href="" data-lightbox="id">
+
                                             <img src="{{ asset($item->image) }}" alt="img" class="img-fluid "></a>
-                                    @endforeach
+                                    @endforeach --}}
 
                                 </div>
                                 <div class="col-6 p-1">

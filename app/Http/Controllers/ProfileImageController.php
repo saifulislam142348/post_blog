@@ -27,7 +27,7 @@ class ProfileImageController extends Controller
             $profileImage->image = $filename;
         }
         $profileImage->save();
-       return redirect()->back()->with('status','Profile image upload succefully');
+       return back()->with('status','Profile image upload succefully');
 
     }
 }

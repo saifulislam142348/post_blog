@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="jumbotron">
-<div><a href="{{route('home')}}" class="btn btn-success ">Back</a></div>
+<div><a href="{{route('user')}}" class="btn btn-success ">Back</a></div>
     
     <hr>
     @if(session('status'))

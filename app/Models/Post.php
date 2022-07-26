@@ -20,9 +20,9 @@ class Post extends Model
     {
         return $this->hasMany(CommentReplay::class);
     }
-    public function catagory()
+    public function catagories()
     {
-        return $this->belongsTo(Catagory::class);
+        return $this->belongsTo(Catagory::class,'category_id', 'id');
     }
   // Likes
     public function likes(){

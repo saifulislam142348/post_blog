@@ -25,7 +25,7 @@ class BackgroundImageController extends Controller
             $backgroundimage->image=$filename;
         }
         $backgroundimage->save();
-        return redirect()->back()->with('status','background image add successfully');
+        return back()->with('status','background image add successfully');
 
         
     }

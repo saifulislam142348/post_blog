@@ -1,19 +1,4 @@
-<div class="container">
-    <div class="row">
-        <div class="col-12 col-lg-3">
-            <!-----profile background------->
-            @include('user/pages/profile_background_photo')
-            <!-----profile background end------->
 
-            <!---------------------------------------------about start------------------------------>
-            @include('user/pages/about')
-            <!----------about end------------>
-            <!---------------------------------------------photoes start------------------------------>
-            @include('user/pages/photoes')
-            <!----------photoes end------------>
-
-        </div>
-    </div>
     <div class="col-12 col-lg-6">
         <div class="middle-column">
             <hr>
@@ -32,17 +17,31 @@
                     <div class="media">
 
 
-                        <img src="{{ asset($item->users->profileImages[count($item->users->profileImages) - 1]->image) }} "
-                            alt="img" width="120px" height="120px"
-                            class="rounded-circle border border-success mt-n5 my-3">
 
                         <div class="media-body">
                             <div>
                                 <div class="row">
-                                    <div class="col-lg-6">  <span>
-                                        <h5> {{ $item->users->name }}</h5>
-                                    </span></div>
+
+
+                                    <div class="col-lg-6"> <span>
+                                            @if (!$item->users->profileImages->isEmpty())
+                                                <img src="{{ asset($item->users->profileImages->first()->image) }}"
+                                                    alt="img" width="120px" height="120px"
+                                                    class="rounded-circle border border-success mt-n5 my-3">
+                                            @else
+                                            <img src="{{ asset('img/no_image.jpg') }}"
+                                            alt="img" width="120px" height="120px"
+                                            class="rounded-circle border border-success mt-n5 my-3">
+                                            @endif
+                                          
+
+
+                                            <h5> {{ $item->users->name }}</h5>
+
+                                        </span></div>
                                     <div class="col-lg-6">
+                                        <!-----post edit delete-------->
+                                    @if($item->users->id==Auth::user()->id)
                                         <div class="dropdown">
                                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
                                                 id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -51,26 +50,31 @@
 
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                 @if (session('edit'))
-                                                <h6 class="alert alert-success">{{ session('status') }}</h6>
-                                            @endif
+                                                    <h6 class="alert alert-success">{{ session('edit') }}</h6>
+                                                @endif
                                                 <li><a class="class="btn btn-sm btn-success"
-                                                        href="{{url('user/post/edit/'.$item->id)}}"><i class="fas fa-edit"></i>Edit</a></li>
+                                                        href="{{ url('user/post/edit/' . $item->id) }}"><i
+                                                            class="fas fa-edit"></i>Edit</a></li>
                                                 <li>
                                                     @if (session('delete'))
-                                                    <h6 class="alert alert-success">{{ session('status') }}</h6>
-                                                @endif
-                                               <form action="{{url('user/post/delete/'.$item->id)}}" method="post"> 
-                                                 @method('DELETE')
-                                                 @csrf
-                                                 <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-trash">Delete</i> </button>
-                                            </form>
-                                                    </li>
+                                                        <h6 class="alert alert-success">{{ session('delete') }}</h6>
+                                                    @endif
+                                                    <form action="{{ url('user/post/delete/' . $item->id) }}"
+                                                        method="post">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-sm btn-danger"> <i
+                                                                class="fas fa-trash">Delete</i> </button>
+                                                    </form>
+                                                </li>
 
                                             </ul>
                                         </div>
+                                        @endif
+                                        <!--post update--->
                                     </div>
                                 </div>
-                              
+
                                 <ul class="bg-green">
                                     <ol><small>Time:{{ $item->created_at }}</small></ol>
                                     <ol><small>Title:{{ $item->title }}</small></ol>

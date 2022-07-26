@@ -46,11 +46,13 @@ class User extends Authenticatable
     ];
 
     public function profileImages()
+
     {
-        return $this->hasMany(ProfileImage::class);
+    
+        return $this->hasMany(ProfileImage::class)->latest();
     }
     public function backgroundImages()
     {
-        return $this->hasMany(BackgroundImage::class);
+        return $this->hasMany(BackgroundImage::class)->latest();
     }
 }
