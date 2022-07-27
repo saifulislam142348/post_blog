@@ -10,6 +10,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileImageController;
 use App\Http\Controllers\BackgroundImageController;
 use App\Http\Controllers\AdminDeleteController;
+use App\Http\Controllers\VoteController;
 
 use App\Http\Controllers\HomeController;
 
@@ -77,6 +78,11 @@ Route::post('user/post/index', [PostController::class, 'store'])->name('postStor
 Route::delete('user/post/delete/{id}', [PostController::class, 'delete']);
 Route::get('user/post/edit/{id}', [PostController::class, 'edit']);
 Route::put('user/post/index/update/{id}', [PostController::class, 'update'])->name('update');
+Route::post('/user/post_like/', [PostController::class, 'postlike'])->name('post.like');
+Route::delete('deletelike/{id}', [PostController::class, 'dislike']);
+
+//votecontrooler
+Route::get('changeStatus', [votecontrooler::class, 'changeStatus']);
 
 //comment controller
 Route::post('user/comment/index', [CommentController::class, 'store'])->name('commentstore');
@@ -117,6 +123,7 @@ Route::get('Admin/user/index',[AdminController::class ,'user'])->name('Adminuser
 Route::post('Admin/catagory/create', [CatagoryController::class, 'store'])->name('catagoryStore');
 Route::delete('Admin/catagory/index/{id}', [CatagoryController::class, 'delete']);
 Route::get('admin/catagory/edit/{id}', [CatagoryController::class, 'edit']);
+Route::get('/statuschange/{id}', [CatagoryController::class, 'changeStatus']);
 
 //AdminDeleteController
 route::delete('admin/user/delete/{id}', [AdminDeleteController::class ,'user']);

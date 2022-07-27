@@ -35,5 +35,6 @@
     <!------friend list start-------->
     @include('user/pages/friend_list')
     <!------friend list end-------->
+   
     
 @endsection

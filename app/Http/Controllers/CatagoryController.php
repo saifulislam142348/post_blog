@@ -39,5 +39,22 @@ class CatagoryController extends Controller
         return view('admin/catagory/edit/', compact('catagory'));
 
     }
+    public function changeStatus( $id){
+        $getstatus=Catagory::select('type')->where('id',$id)->first();
+
+        if($getstatus->type==1){
+            $status=0;
+        }else{
+            $status=1;
+        }
+        Catagory::where('id',$id)->update(['type'=>  $status]);
+
+      
+        return back()->with('status','status update successfully');
+   
     
+
+    }
+    
+  
 }

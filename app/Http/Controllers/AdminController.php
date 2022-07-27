@@ -21,9 +21,9 @@ class AdminController extends Controller
       $post =Post::get();
       $catagory =Catagory::get();
       $profileImage =ProfileImage::get();
-      $BpbackgroundImage =BackgroundImage::get();
+      $backgroundImage =BackgroundImage::get();
       $user = User::where('type','user')->get();
-      dd($user);
+     // dd($user);
       $comment =Comment::get();
       $commentReplay =CommentReplay::get();
      // dd($user);

@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('catagories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
+            $table->bigInteger('type')->default(0);
        
          
             

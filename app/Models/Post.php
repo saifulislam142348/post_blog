@@ -32,4 +32,9 @@ class Post extends Model
     public function dislikes(){
         return $this->hasMany(LikeDislike::class ,'post_id')->sum('dislike');
     }
+
+    
+    public function votes(){
+        return $this->hasMany(Vote::class)->latest();
+    }
 }

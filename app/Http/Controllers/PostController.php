@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Catagory;
+use App\Models\Vote;
 class PostController extends Controller
 {
     public function __construct()
@@ -51,6 +52,7 @@ public function delete($id){
     $post->delete();
     return redirect()->back()->with('delete','post Deleted Successfully');
 }
+
 public function edit($id){
     $post= Post::find($id);
     $catagory= Catagory::get();
@@ -85,5 +87,18 @@ public function update(Request $request , $id){
         
 
         }
+      public function postlike(Request $request){
+        $vote= new Vote();
+        $vote->user_id=$request->input('user_id');
+        $vote->post_id=$request->input('post_id');
+        $vote->save();
+        return back();
+      }
+      //post like delete
+      public function dislike($id){
+        $post= Vote::find($id);
+        $post->delete();
+        return redirect()->back();
+    }
 
 }
