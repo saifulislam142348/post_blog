@@ -44,8 +44,7 @@
                     <a href="#" data-bs-toggle="dropdown">
 
                         <img src="{{ asset(Auth::user()->profileimages->first()->image) }} " alt="img"
-                            width="120px" height="120px"
-                            class="rounded-circle border border-success mt-n5 my-3">
+                            width="120px" height="120px" class="rounded-circle border border-success mt-n5 my-3">
                     </a>
 
 
@@ -65,8 +64,8 @@
 
                     <a href="#" data-bs-toggle="dropdown">
 
-                        <img src="{{ asset('img/no_image.jpg') }}" alt="img" width="120px"
-                                                height="120px" class="rounded-circle border border-success mt-n5 my-3">
+                        <img src="{{ asset('img/no_image.jpg') }}" alt="img" width="120px" height="120px"
+                            class="rounded-circle border border-success mt-n5 my-3">
                     </a>
 
 
@@ -89,19 +88,18 @@
 
             <h5 class="card-title"> {{ Auth::user()->name }}</h5>
             <p class="card-text text-justify mb-2">
-                {{ Auth::user()->about }}</p>
+
             <ul class="list-unstyled nav justify-content-center">
                 <a href="#" class="text-dark text-decoration-none">
-                    <li class="nav-item"> <br> <strong>
-                            <button class="btn btn-info">
-                                <span><b>All users:</b> </span>
-                         
-                             {{$users->count()}}
+                    <li class="nav-item"> <br>
+                        <strong>
+                            <!-- Button trigger modal -->
                            
+                            @include('user/pages/user_friends')
 
-                            </button>
-
-                        </strong></li>
+<!---------------------modal end-------------------->
+                        </strong>
+                    </li>
                 </a>
 
             </ul>

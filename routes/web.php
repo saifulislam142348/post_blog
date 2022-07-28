@@ -79,17 +79,18 @@ Route::post('user/post/index', [PostController::class, 'store'])->name('postStor
 Route::delete('user/post/delete/{id}', [PostController::class, 'delete']);
 Route::get('user/post/edit/{id}', [PostController::class, 'edit']);
 Route::put('user/post/index/update/{id}', [PostController::class, 'update'])->name('update');
-Route::post('/user/post_like/', [PostController::class, 'postlike'])->name('post.like');
-Route::delete('deletelike/{id}', [PostController::class, 'dislike']);
+
 
 
 //FriendController
 Route::post('/user/friend/', [FriendController::class, 'friend'])->name('user.friend');
 Route::delete('user/unfriend/{id}', [FriendController::class, 'unfriend']);
+Route::get('user/pages/friendConfirm/{id}', [FriendController::class, 'friendConfirm']);
 
 
 //votecontrooler
-Route::get('changeStatus', [votecontrooler::class, 'changeStatus']);
+Route::post('/user/post_like/', [VoteController::class, 'postlike'])->name('post.like');
+Route::delete('deletelike/{id}', [VoteController::class, 'deletelike']);
 
 //comment controller
 Route::post('user/comment/index', [CommentController::class, 'store'])->name('commentstore');

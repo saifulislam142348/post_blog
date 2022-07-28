@@ -58,6 +58,6 @@ class User extends Authenticatable
 
     public function friends()
     {
-        return $this->hasMany(Friend::class)->latest();
+        return $this->hasMany(Friend::class);
     }
 }

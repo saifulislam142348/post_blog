@@ -1,15 +1,14 @@
 <div class="col-12 col-lg-6">
     <div class="middle-column">
-        <hr>
-        <hr>
+
         <div class="d-grid gap-2">
 
             <a class="btn btn-primary" href="{{ route('userpost') }}">Post</a>
 
         </div>
-        <hr>
-        <hr>
 
+        <hr>
+        <hr>
 
         <div class="card-body">
             @foreach ($post as $item)
@@ -69,7 +68,7 @@
 
                     </div>
                 </div>
-                <hr>
+
                 <!-- Gallery -->
                 @include('user/pages/post_image')
 
@@ -82,34 +81,27 @@
                         @if ($item->votes->isEmpty())
                             <form action="{{ route('post.like') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="user_id" value="{{ Auth::user()->id}}" class="form-control">
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"
+                                    class="form-control">
                                 <input type="hidden" name="post_id" value="{{ $item->id }}" class="form-control">
                                 <button><i class="fa fa-thumbs-up"></i></button>
 
                             </form>
                         @else
-             
-                 {{-- {{dd($item)}} --}}
-                 {{-- @php
+                            {{-- {{dd($item)}} --}}
+                            {{-- @php
 
                      
                  @endphp --}}
-                 <form action="{{ url('deletelike/'.$item->votes[0]->post_id  ) }}" method="post">
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn-success"><i class=" fa fa-thumbs-up"></i></button>
+                            <form action="{{ url('deletelike/' . $item->votes[0]->post_id) }}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn-success"><i class=" fa fa-thumbs-up"></i></button>
 
-                </form>
-                     
-                
-                               
-                           
+                            </form>
                         @endif
 
 
-
-                    </div>
-                    <div>
 
                     </div>
 
@@ -170,7 +162,8 @@
                                     </tr>
                                     </td>
 
-                                    </tr>
+                        </div>
+                        </tr>
             @endforeach
             </tr>
 

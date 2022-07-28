@@ -23,7 +23,7 @@ class UserController extends Controller
         $vote = Vote::get();
         // dd($vote->postlike);
         
-        $friend = Friend::latest()->get();
+        $friends = Friend::get();
        $profileimage= ProfileImage::latest()->first();
     
       $users=User::where('type','user')->get();
@@ -32,7 +32,7 @@ class UserController extends Controller
 
  
       
-        return view('user/index', compact('post','profileimage','backgroundimage','users','vote' ,'friend'));
+        return view('user/index', compact('post','profileimage','backgroundimage','users','vote' ,'friends'));
       
     }
     public function votes($id){
