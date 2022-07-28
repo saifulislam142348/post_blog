@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Vote;
 use App\Models\CommentReplay;
+use App\Models\Friend;
 use App\Models\Comment;
 use App\Models\ProfileImage;
 use App\Models\backgroundImage;
@@ -20,6 +21,7 @@ class UserController extends Controller
       //dd($commentreplay);
         $post = Post::latest()->get();
         $vote = Vote::get();
+        $friend = Friend::get();
        $profileimage= ProfileImage::latest()->first();
     
       $users=User::where('type','user')->get();
@@ -28,7 +30,7 @@ class UserController extends Controller
 
  
       
-        return view('user/index', compact('post','profileimage','backgroundimage','users','vote' ));
+        return view('user/index', compact('post','profileimage','backgroundimage','users','vote' ,'friend'));
       
     }
     public function votes($id){

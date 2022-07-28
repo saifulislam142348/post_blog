@@ -1,6 +1,6 @@
 @if($item->users->id==Auth::user()->id)
 <div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
+    <a class="btn  dropdown-toggle" href="#" role="button"
         id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fa fa-bars"></i>
     </a>

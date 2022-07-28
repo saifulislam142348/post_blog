@@ -45,7 +45,7 @@
 
                         <img src="{{ asset(Auth::user()->profileimages->first()->image) }} " alt="img"
                             width="120px" height="120px"
-                            class="rounded-circle card-img-top border border-success mt-n5 my-3">
+                            class="rounded-circle border border-success mt-n5 my-3">
                     </a>
 
 
@@ -65,8 +65,8 @@
 
                     <a href="#" data-bs-toggle="dropdown">
 
-                        <img src="{{ asset('img/no_image.jpg') }} " alt="img" width="120px" height="120px"
-                            class="rounded-circle card-img-top border border-success mt-n5 my-3">
+                        <img src="{{ asset('img/no_image.jpg') }}" alt="img" width="120px"
+                                                height="120px" class="rounded-circle border border-success mt-n5 my-3">
                     </a>
 
 

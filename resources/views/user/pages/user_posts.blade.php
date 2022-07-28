@@ -89,12 +89,12 @@
                             </form>
                         @else
                             @foreach ($vote as $dislike)
-                            <form action="{{ url('deletelike/'.$dislike->id) }}" method="post">
-                                @method('DELETE')
-                                @csrf
-                                <button class="btn-success"><i class=" fa fa-thumbs-up"></i></button>
-                          
-                            </form>
+                                <form action="{{ url('deletelike/' . $dislike->id) }}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn-success"><i class=" fa fa-thumbs-up"></i></button>
+
+                                </form>
                             @endforeach
                         @endif
 
@@ -107,23 +107,22 @@
 
 
                     <button type="button" class="btn btn-primary">
-                        <i class="far fa-comment"></i>
-
-
-                        <a href="{{ url('user/comment/index/' . $item->id) }}"> <span class="badge bg-secondary "
+                        <a href="{{ url('user/comment/index/' . $item->id) }}"> <span class="badge  "
                                 data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Comment (4)</span></a>
+                                <i class="far fa-comment">comment</i>
+                            </span>
+                        </a>
                     </button>
-                    <button type="button" class="btn btn-primary">
-
-
-
-                        <a href="{{ url('user/comment/view/' . $item->id) }}"> <span class="badge bg-secondary">
-                                comment Replay(4)</span></a>
+                    <button type="button " class="btn btn-primary ">
+                        <a href="{{ url('user/comment/view/' . $item->id) }}">
+                            <span class="badge">
+                                <i class="far fa-comment">Replay</i>
+                            </span>
+                        </a>
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                comment & replay
+                                <i class="far fa-comment">view</i>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <table class=" table  table-striped">

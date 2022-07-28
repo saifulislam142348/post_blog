@@ -21,9 +21,6 @@ return new class extends Migration
             $table->string('password');
             $table->string('about');
             $table->string('type')->default('user');
-            $table->string('friend')->default(0);
-           
-           
             $table->rememberToken();
             $table->timestamps();
         });

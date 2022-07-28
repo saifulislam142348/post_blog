@@ -55,4 +55,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(BackgroundImage::class)->latest();
     }
+
+    public function friends()
+    {
+        return $this->hasMany(Friend::class)->latest();
+    }
 }

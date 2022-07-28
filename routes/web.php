@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileImageController;
 use App\Http\Controllers\BackgroundImageController;
 use App\Http\Controllers\AdminDeleteController;
 use App\Http\Controllers\VoteController;
+use App\Http\Controllers\FriendController;
 
 use App\Http\Controllers\HomeController;
 
@@ -80,6 +81,12 @@ Route::get('user/post/edit/{id}', [PostController::class, 'edit']);
 Route::put('user/post/index/update/{id}', [PostController::class, 'update'])->name('update');
 Route::post('/user/post_like/', [PostController::class, 'postlike'])->name('post.like');
 Route::delete('deletelike/{id}', [PostController::class, 'dislike']);
+
+
+//FriendController
+Route::post('/user/friend/', [FriendController::class, 'friend'])->name('user.friend');
+Route::delete('user/unfriend/{id}', [FriendController::class, 'unfriend']);
+
 
 //votecontrooler
 Route::get('changeStatus', [votecontrooler::class, 'changeStatus']);
