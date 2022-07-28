@@ -21,7 +21,7 @@ class UserController extends Controller
       //dd($commentreplay);
         $post = Post::latest()->get();
         $vote = Vote::get();
-        $friend = Friend::get();
+        $friend = Friend::latest()->get();
        $profileimage= ProfileImage::latest()->first();
     
       $users=User::where('type','user')->get();

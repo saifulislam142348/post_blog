@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('friends', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('auth_id');
             $table->unsignedBigInteger('user_id');
             $table->smallInteger('friend')->default(0);
             $table->timestamps();
