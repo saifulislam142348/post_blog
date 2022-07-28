@@ -35,6 +35,6 @@ class Post extends Model
 
     
     public function votes(){
-        return $this->hasMany(Vote::class)->latest();
+        return $this->hasMany(Vote::class);
     }
 }

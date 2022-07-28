@@ -82,20 +82,28 @@
                         @if ($item->votes->isEmpty())
                             <form action="{{ route('post.like') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="user_id" value="{{ $item->user_id }}" class="form-control">
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id}}" class="form-control">
                                 <input type="hidden" name="post_id" value="{{ $item->id }}" class="form-control">
                                 <button><i class="fa fa-thumbs-up"></i></button>
 
                             </form>
                         @else
-                            @foreach ($vote as $dislike)
-                                <form action="{{ url('deletelike/' . $dislike->id) }}" method="post">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button class="btn-success"><i class=" fa fa-thumbs-up"></i></button>
+             
+                 {{-- {{dd($item)}} --}}
+                 {{-- @php
 
-                                </form>
-                            @endforeach
+                     
+                 @endphp --}}
+                 <form action="{{ url('deletelike/'.$item->votes[0]->post_id  ) }}" method="post">
+                    @method('DELETE')
+                    @csrf
+                    <button class="btn-success"><i class=" fa fa-thumbs-up"></i></button>
+
+                </form>
+                     
+                
+                               
+                           
                         @endif
 
 

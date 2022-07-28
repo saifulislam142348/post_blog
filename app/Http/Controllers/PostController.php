@@ -96,8 +96,10 @@ public function update(Request $request , $id){
       }
       //post like delete
       public function dislike($id){
-        $post= Vote::find($id);
-        $post->delete();
+        $postlikedelete= Vote::where('post_id',$id)->first();
+        // dd( $postlikedelete);
+      
+        $postlikedelete->delete();
         return redirect()->back();
     }
 
