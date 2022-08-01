@@ -16,7 +16,7 @@
                 @foreach ($users as $key => $value)
                   
                     @foreach  ($value->friends as $k => $fr)
-                        @if ($fr->friend == 1)
+                        @if (Auth::user()->id==$fr->auth_id && $fr->friend == 1)
                             <tr>
                              <td>{{ $key + 1 }}</td>
                                 <td> <a href="">

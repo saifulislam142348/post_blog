@@ -1,4 +1,4 @@
-<div class="col-12 col-lg-6">
+<div class="col-12 col-lg-9">
     <div class="middle-column">
 
         <div class="d-grid gap-2">
@@ -196,6 +196,5 @@
    
    
  @endforeach      
-</div>
 
 

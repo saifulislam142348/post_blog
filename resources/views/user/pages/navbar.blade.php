@@ -29,7 +29,7 @@
 
         <form action="" class="form-inline ml-auto d-none d-md-block">
             <input type="text" name="search" id="search" placeholder="Search"
-                class="form-control form-control-sm">
+                class="class="typeahead form-control"">
         </form>
 
     

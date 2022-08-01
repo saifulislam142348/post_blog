@@ -36,6 +36,20 @@ class AdminController extends Controller
     return view('admin/comments/index');
    }
 
+   public function adminindex(){
+      $post =Post::get();
+      $catagory =Catagory::get();
+      $profileImage =ProfileImage::get();
+      $backgroundImage =BackgroundImage::get();
+      $user = User::where('type','user')->get();
+     // dd($user);
+      $comment =Comment::get();
+      $commentReplay =CommentReplay::get();
+     // dd($user);
+    return view('admin/adminIndex', compact('post','catagory','profileImage','backgroundImage','user'));
+
+   }
+
    public function commentReplay(){
     return view('admin/commentReplay/index');
    }

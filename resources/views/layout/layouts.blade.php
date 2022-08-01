@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="{{ asset('asset/css/bootstrap-grid.rtl.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/bootstrap-utilities.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/bootstrap-utilities.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -122,7 +125,8 @@
 
         /*----------------------------------------------------------------------------------------------------------------------------*/
     </style>
-
+ <link href="{{asset('css/style.css')}}" rel="stylesheet">
+ <link href="{{asset('css/themes/all-themes.css')}}" rel="stylesheet" />
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -169,9 +173,9 @@
             }
         });
     </script>
-    
 
-@include('layout/ajax')
+
+    @include('layout/ajax')
 
     <!------------------------Light BOx OPtions------------->
 </body>

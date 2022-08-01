@@ -14,25 +14,24 @@
                 <!-----profile background------->
                 @include('user/pages/profile_background_photo')
                 <!-----profile background end------->
-    
+
                 <!---------------------------------------------about start------------------------------>
                 @include('user/pages/about')
                 <!----------about end------------>
                 <!---------------------------------------------photoes start------------------------------>
                 @include('user/pages/photoes')
                 <!----------photoes end------------>
-    
+                <!------friend list start-------->
+                @include('user/pages/friend_list')
+                <!------friend list end-------->
             </div>
-        </div>
-      
-    <!-------------------posts---------------------------->
-    @include('user/pages/user_posts')
-    <!---------posts end-------->
+            </div>
 
 
-    <!------friend list start-------->
-    @include('user/pages/friend_list')
-    <!------friend list end-------->
-   
-    
-@endsection
+
+
+            <!-------------------posts---------------------------->
+            @include('user/pages/user_posts')
+            <!---------posts end-------->
+            
+        @endsection

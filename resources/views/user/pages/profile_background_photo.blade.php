@@ -1,6 +1,4 @@
 <div class="left-column">
-
-
     <div class="card card-left1 mb-4">
         <!---------------------------------->
         @if (!Auth::user()->backgroundImages->isEmpty())
@@ -52,9 +50,7 @@
                     <ul class="dropdown-menu">
                        
                         <li>
-                          
-
-                            
+                         
                             <a class="dropdown-item btn btn-outline-info " href="{{ route('profil.image') }}">Add</a>
                         </li>
 

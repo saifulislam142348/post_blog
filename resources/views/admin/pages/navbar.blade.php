@@ -1,61 +1,49 @@
-<div class="btn-group">
-    <button class="btn btn-success" type="button">
-        <a href="{{ route('AdminDashboard') }}"></a> Dashboard
+<div class="dropdown">
+    <a href="#" data-bs-toggle="dropdown">
 
-    </button>
-    <button class="btn btn-danger" type="button">
-        <div class="" aria-labelledby="navbarDropdown">
+        <img src="{{ asset('img/no_image.jpg') }}" alt="img" width="120px" height="120px"
+            class="rounded-circle border border-success mt-n5 my-3">
+    </a>
+
+
+
+    <ul class="dropdown-menu">
+        <li>
             <a class="" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
+                         document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
             </a>
 
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
             </form>
-        </div>
-        </li>
-    </button>
 
-</div>
+        </li>
 
-<div class="btn-group">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        <strong> Menu Bar</strong>
+        <!-- Button trigger modal -->
 
-    </button>
-    <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-        <li class="">
-            <a class=" btn dropdown-item " href="{{ route('Adminuser') }}">
-                <span class="btn btn-outline-success list-group-item">User</span>
-            </a>
-        </li>
-        <li>
-            <a class=" btn dropdown-item " href="{{ route('Adminposts') }}">
-                <span class="btn btn-outline-success list-group-item">Post</span>
-            </a>
-        </li>
-        <li>
-            <a class=" btn dropdown-item " href="{{ route('Adminphoto') }}"> <span
-                    class="btn btn-outline-success list-group-item">Post Photo</span></a>
-        </li>
-        <li>
+
+
+    </ul>
+
+
+    <ul>
+       
+    
+       
+        <ol>
             <a class=" btn dropdown-item " href="{{ route('Admincatagory') }}"> <span
-                    class="btn btn-outline-success list-group-item">Catagory</span></a>
-        </li>
-        <li>
+                    class="btn btn-outline-success list-group-item">Catagory create</span></a>
+        </ol>
+        <ol>
             <a class=" btn dropdown-item " href="{{ route('Adminlvote') }}"> <span
                     class="btn btn-outline-success list-group-item">Votes count</span></a>
-        </li>
-        <li>
+        </ol>
+        <ol>
             <a class=" btn dropdown-item " href="{{ route('Admincomment') }}"> <span
                     class="btn btn-outline-success list-group-item">Comment</span></a>
-        </li>
-        <li>
-            <a class=" btn dropdown-item " href="{{ route('AdmincommentReplay') }}"> <span
-                    class="btn btn-outline-success list-group-item">CommentReplay</span></a>
-        </li>
+        </ol>
+      
     </ul>
 </div>

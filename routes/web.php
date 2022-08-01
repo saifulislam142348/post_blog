@@ -12,6 +12,7 @@ use App\Http\Controllers\BackgroundImageController;
 use App\Http\Controllers\AdminDeleteController;
 use App\Http\Controllers\VoteController;
 use App\Http\Controllers\FriendController;
+use App\Http\Controllers\SearchController;
 
 use App\Http\Controllers\HomeController;
 
@@ -31,6 +32,7 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 
 
@@ -60,6 +62,9 @@ Route::get('user/likeposts',[UserController::class ,'likePosts'])->name('userlik
 Route::get('user/post/index',[UserController::class ,'post'])->name('userpost');
 Route::post('user/post/index/{id}',[UserController::class ,'votes'])->name('userlike');
 Route::post('user/post/like',[UserController::class ,'like']);
+
+//
+Route::get('autocomplete', [SearchController::class, 'autocomplete'])->name('autocomplete');
 
 // ProfileimageController
 Route::get('user/image/profile/add', [ProfileImageController::class, 'add'])->name('profil.image');
@@ -119,6 +124,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     
 //adminController
 Route::get('Admin/index',[AdminController::class ,'index'])->name('AdminDashboard');
+
 Route::get('Admin/catagory/index',[AdminController::class ,'catagory'])->name('Admincatagory');
 Route::get('Admin/catagory/create',[AdminController::class ,'create'])->name('catagorycreate');
 Route::get('Admin/comments/index',[AdminController::class ,'comment'])->name('Admincomment');

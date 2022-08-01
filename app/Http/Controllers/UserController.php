@@ -12,6 +12,7 @@ use App\Models\Friend;
 use App\Models\Comment;
 use App\Models\ProfileImage;
 use App\Models\backgroundImage;
+
 use Auth;
 
 class UserController extends Controller
@@ -21,6 +22,7 @@ class UserController extends Controller
       //dd($commentreplay);
         $post = Post::latest()->get();
         $vote = Vote::get();
+        
         $catagory = Catagory::get();
         $cmt = Comment::get();
         // dd($vote->postlike);

@@ -1,18 +1,10 @@
-<script>
-  $(function() {
-    $('.toggle-class').change(function() {
-        var status = $(this).prop('checked') == true ? 1 : 0; 
-        var user_id = $(this).data('id'); 
-         
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            url: '/changeStatus',
-            data: {'status': status, 'id': user_id},
-            success: function(data){
-              console.log(data.success)
-            }
-        });
-    })
-  })
+<script type="text/javascript">
+  var path = "{{ route('autocomplete') }}";
+  $('input.typeahead').typeahead({
+      source:  function (query, process) {
+      return $.get(path, { query: query }, function (data) {
+              return process(data);
+          });
+      }
+  });
 </script>
