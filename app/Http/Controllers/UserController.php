@@ -21,6 +21,8 @@ class UserController extends Controller
       //dd($commentreplay);
         $post = Post::latest()->get();
         $vote = Vote::get();
+        $catagory = Catagory::get();
+        $cmt = Comment::get();
         // dd($vote->postlike);
         
         $friends = Friend::get();
@@ -32,7 +34,7 @@ class UserController extends Controller
 
  
       
-        return view('user/index', compact('post','profileimage','backgroundimage','users','vote' ,'friends'));
+        return view('user/index', compact('post','profileimage','backgroundimage','users','vote' ,'friends','catagory','cmt'));
       
     }
     public function votes($id){

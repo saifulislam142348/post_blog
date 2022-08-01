@@ -1,8 +1,20 @@
 <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalToggleLabel">My friends</h5>
+        <div class="modal-header ">
+          <h5 class="modal-title" id="exampleModalToggleLabel">
+            <button type="button" class="btn btn-primary">
+              MyFriends 
+              <span class="badge badge-light">
+             @php
+                 $friendcount=DB::table('friends')->where('friend','1');
+                 echo  $friendcount->count();
+             @endphp
+
+              </span>
+              </button>
+        </h5>
+
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -18,7 +30,19 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalToggleLabel2">Friends Requested</h5>
+          <h5 class="modal-title" id="exampleModalToggleLabel2">
+            <button type="button" class="btn btn-primary">
+              Friends Requested
+            <span class="badge badge-light">
+              @php
+                  $friendcount=DB::table('friends')->where('friend','0');
+                  echo  $friendcount->count();
+              @endphp
+ 
+               </span>
+            </button>
+            
+          </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -30,4 +54,21 @@
       </div>
     </div>
   </div>
-  <a class="btn btn-primary class="modal-dialog modal-dialog-scrollable" data-bs-toggle="modal" href="#exampleModalToggle" role="button">My Friends</a>
+  <a class="btn btn-primary class="modal-dialog modal-dialog-scrollable" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
+    <button type="button" class="btn btn-primary">
+        My friends  <span class="badge badge-light">
+     
+         
+            @php
+                $friendcount=DB::table('friends')->where('friend','1');
+             
+                echo  $friendcount->count();
+            @endphp
+
+             
+         
+                
+            
+            </span>
+      </button>
+  </a>

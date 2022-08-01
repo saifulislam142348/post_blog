@@ -2,9 +2,10 @@
     <div class="middle-column">
 
         <div class="d-grid gap-2">
-
-            <a class="btn btn-primary" href="{{ route('userpost') }}">Post</a>
-
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#postModal">
+                post Now
+            </button>
+            @include('user/pages/posts')
         </div>
 
         <hr>
@@ -88,11 +89,6 @@
 
                             </form>
                         @else
-                            {{-- {{dd($item)}} --}}
-                            {{-- @php
-
-                     
-                 @endphp --}}
                             <form action="{{ url('deletelike/' . $item->votes[0]->post_id) }}" method="post">
                                 @method('DELETE')
                                 @csrf
@@ -101,29 +97,33 @@
                             </form>
                         @endif
 
-
-
                     </div>
+                    <!------comment --------->
+                    @include('user/pages/user_comment')
+                    <!------comment end-------->
+                 
 
+                    <button type="button " class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#commentModal">
 
-                    <button type="button" class="btn btn-primary">
-                        <a href="{{ url('user/comment/index/' . $item->id) }}"> <span class="badge  "
-                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <i class="far fa-comment">comment</i>
-                            </span>
-                        </a>
-                    </button>
-                    <button type="button " class="btn btn-primary ">
-                        <a href="{{ url('user/comment/view/' . $item->id) }}">
-                            <span class="badge">
-                                <i class="far fa-comment">Replay</i>
-                            </span>
-                        </a>
+                        <span class="badge">
+                            <i class="far fa-comment">comment</i>
+                        </span>
+                     
                         <div class="dropdown">
+                            <button class="btn btn-primary"> 
+                                <a href="{{ url('user/comment/view/' . $item->id) }}">
+                                <span class="badge">
+                                    <i class="far fa-comment">Replay</i>
+                                </span>
+                            </a>
+                        </button>
+                           
                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="far fa-comment">view</i>
                             </button>
+                            
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <table class=" table  table-striped">
                                     <tr class="table-primary">
@@ -139,50 +139,63 @@
                                     <tr>
                                         @foreach ($item->comments as $item)
                                     <tr>
-                                        <td>{{ $item->message }}
+                                        <td>
+                                       
+                                            {{ $item->message }}
                                         </td>
 
                                         <td>
 
-                                        <th scope>Replay</th>
+                                        <th class="bg-light">Replay</th>
 
 
-                                        @foreach ($item->replies as $it)
+                                        @foreach ($item->replies as  $key=>$it)
                                             <td>
-                                                <ul>
-                                                    <li>
-                                                        {{ $it->replay }}
-                                                    </li>
-                                                </ul>
-
-
+                                            
+                                              
+                                               <span class="alert alert-success"> {{ $it->replay }}</span>  
+                                              
+                                                    
+                                                       
+                                                      
+                                                    
+                                                   
+                                                
                                             </td>
                                         @endforeach
 
                                     </tr>
                                     </td>
-
                         </div>
                         </tr>
             @endforeach
             </tr>
-
             </table>
             </ul>
         </div>
         </button>
-
-
-
-
-
     </div>
     <!-------------------posts end---------------------------->
     <hr>
     @endforeach
-
+</div>
+<div class="jumbotron">
+    @foreach ($item->comments->toArray() as $comment)
+   
+    <li>{{$comment['message']}}</li>
+    <form action="{{route('replaystore')}}" method="post">
+        @csrf
+    <input type="hidden" name="comment_id" value="{{$comment['id']}}">
+    <input type="hidden" name="user_id" value="{{ $item->user_id }}">
+    <input type="hidden" name="post_id" value="{{ $item->id }}">
+     <div class="mb-3">
+         <input type="text" name="replay" class="form-control">
+         <input  type="submit" class="btn btn-outline-success btn-danger" value="Replay">
+     </div>
+ </form>
+   
+   
+ @endforeach      
 </div>
 
-</div>
 
-</div>

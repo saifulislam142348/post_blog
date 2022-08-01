@@ -8,11 +8,15 @@
 
 
    <div class="jumbotron">
+
+    
+    
     @foreach ($users as $item)
+  
     <div class="d-flex flex-row bd-highlight mb-3">
 
-        @if ($item->id == Auth::user()->id)
-        @else
+       
+       
             <a href="#" class="btn btn-info text-warning btn-outline-dark btn-sm mb-3"><i
                     class="fas fa-user-friends">
                     <span>{{ $item->name }}</span>
@@ -31,8 +35,9 @@
                         class="rounded-circle border border-success mt-n5 my-3">
                 @endif
             </a>
-        @endif
+   
     </div>
+    
 @endforeach
    </div>
       

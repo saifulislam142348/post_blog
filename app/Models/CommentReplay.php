@@ -12,5 +12,9 @@ class CommentReplay extends Model
     {
         return $this->belongsTo(Comment::class);
     }
+    public function users()
+    {
+        return $this->belongsTo(User::class,'user_id','id');
+    }
 
 }

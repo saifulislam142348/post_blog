@@ -50,8 +50,14 @@
 
 
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item btn btn-outline-info " href="{{ route('profil.image') }}">Add</a>
+                       
+                        <li>
+                          
+
+                            
+                            <a class="dropdown-item btn btn-outline-info " href="{{ route('profil.image') }}">Add</a>
                         </li>
+
                         <li><a class="dropdown-item btn btn-outline-info "
                                 href="{{ route('profile.imageEdit') }}">Edit</a>
                         </li>
@@ -74,6 +80,9 @@
                         <li><a class="dropdown-item btn btn-outline-info " href="{{ route('profil.image') }}">Add</a>
                         </li>
 
+                        <!-- Button trigger modal -->
+                      
+
 
                     </ul>
                 </div>
@@ -94,10 +103,10 @@
                     <li class="nav-item"> <br>
                         <strong>
                             <!-- Button trigger modal -->
-                           
+
                             @include('user/pages/user_friends')
 
-<!---------------------modal end-------------------->
+                            <!---------------------modal end-------------------->
                         </strong>
                     </li>
                 </a>
