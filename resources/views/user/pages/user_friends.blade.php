@@ -7,7 +7,7 @@
               MyFriends 
               <span class="badge badge-light">
              @php
-                 $friendcount=DB::table('friends')->where('friend','1')->where('auth_id',Auth::user()->id);
+                 $friendcount=DB::table('friends')->where('friend','1')->where('user_id',Auth::user()->id);
                  echo  $friendcount->count();
              @endphp
 
@@ -35,7 +35,7 @@
               Friends Requested
             <span class="badge badge-light">
               @php
-                  $friendcount=DB::table('friends')->where('friend','0')->where('auth_id',Auth::user()->id);
+                  $friendcount=DB::table('friends')->where('friend','0')->where('user_id',Auth::user()->id);
                   echo  $friendcount->count();
               @endphp
  
@@ -60,7 +60,7 @@
      
          
             @php
-                $friendcount=DB::table('friends')->where('friend','1')->where('auth_id',Auth::user()->id);
+                $friendcount=DB::table('friends')->where('friend','1')->where('user_id',Auth::user()->id);
              
                 echo  $friendcount->count();
             @endphp
